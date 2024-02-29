@@ -1,0 +1,208 @@
+/* --i: voor snelheid */
+/* --x: voor x positie */
+/* --Y: voor y positie */
+li:nth-child(1)  { --i:1;  --x:10; --y:46; }
+li:nth-child(2)  { --i:2;  --x:50; --y:68; }
+li:nth-child(3)  { --i:3;  --x:23; --y:23; }
+li:nth-child(4)  { --i:4;  --x:67; --y:97; }
+li:nth-child(6)  { --i:6;  --x:91; --y:24; }
+li:nth-child(5)  { --i:5;  --x:12; --y:56; }
+li:nth-child(7)  { --i:7;  --x:33; --y:89; }
+li:nth-child(8)  { --i:8;  --x:47; --y:35; }
+li:nth-child(10) { --i:10; --x:13; --y:23; }
+
+
+ul  {
+    display: grid;
+    justify-items: start;
+
+    margin:0;
+    padding:0;
+    list-style:none;
+}
+
+ul li {
+    grid-column-start:1;
+    grid-row-start:1;
+}
+
+ul input {
+    display:none;
+}
+
+input[name="addBird1"]:not(:checked) {
+    display:block;
+}
+
+li:has(input:checked) + li input:not(:checked) {
+    display:block;
+}
+
+p {
+    display: none;
+}
+
+
+input:checked + p {
+    display:block;
+    animation: flying 1s ease;
+    animation-iteration-count: infinite;
+    font-size:calc(1em * var(--i));
+
+    position: fixed;
+    left: calc(1vw * var(--x));
+    top: calc(1dvh * var(--y));
+}
+
+@keyframes flying {
+    0% {
+        translate: 0 10rem;
+    }
+
+    100% {
+
+        translate: 0 1rem;
+    }
+}
+
+/* section:has( input[name^="addBird"]:checked) + article p  {
+    display: block;
+} */
+
+/* section:has( input[name="addBird2"]:checked) + article p:nth-of-type(2) {
+    display: block;
+} */
+
+
+
+/* section input:nth-of-type(2) {
+    display: none; 
+}
+
+section input:nth-of-type(3) {
+    display: none; 
+}
+
+section input:nth-of-type(4) {
+    display: none; 
+}
+
+section input:nth-of-type(5) {
+    display: none; 
+}
+
+section input:nth-of-type(6) {
+    display: none; 
+}
+
+section input:nth-of-type(7) {
+    display: none; 
+}
+
+section input:nth-of-type(8) {
+    display: none; 
+}
+
+section input:nth-of-type(9) {
+    display: none; 
+}
+
+section input:nth-of-type(10) {
+    display: none; 
+}
+
+section input:nth-of-type(11) {
+    display: none; 
+}
+
+section input:nth-of-type(12) {
+    display: none; 
+}
+
+section input:nth-of-type(13) {
+    display: none; 
+}
+
+section input:nth-of-type(14) {
+    display: none; 
+}
+
+section input:nth-of-type(15) {
+    display: none; 
+}
+
+section input:nth-of-type(16) {
+    display: none; 
+}
+
+section input:nth-of-type(17) {
+    display: none; 
+}
+
+section input:nth-of-type(18) {
+    display: none; 
+}
+
+section input:nth-of-type(19) {
+    display: none; 
+} */
+
+
+/* section:has(input:first-of-type:checked) input:nth-of-type(2){
+    display: block; 
+}
+section:has(input:nth-of-type(2):checked) input:nth-of-type(3){
+    display: block; 
+}
+section:has(input:nth-of-type(3):checked) input:nth-of-type(4){
+    display: block; 
+}
+section:has(input:nth-of-type(4):checked) input:nth-of-type(5){
+    display: block; 
+}
+section:has(input:nth-of-type(5):checked) input:nth-of-type(6){
+    display: block; 
+}
+section:has(input:nth-of-type(6):checked) input:nth-of-type(7){
+    display: block; 
+}
+section:has(input:nth-of-type(7):checked) input:nth-of-type(8){
+    display: block; 
+}
+section:has(input:nth-of-type(8):checked) input:nth-of-type(9){
+    display: block; 
+}
+section:has(input:nth-of-type(9):checked) input:nth-of-type(10){
+    display: block; 
+}
+section:has(input:nth-of-type(10):checked) input:nth-of-type(11){
+    display: block; 
+}
+section:has(input:nth-of-type(11):checked) input:nth-of-type(12){
+    display: block; 
+}
+section:has(input:nth-of-type(12):checked) input:nth-of-type(13){
+    display: block; 
+}
+section:has(input:nth-of-type(13):checked) input:nth-of-type(14){
+    display: block; 
+}
+section:has(input:nth-of-type(14):checked) input:nth-of-type(15){
+    display: block; 
+}
+section:has(input:nth-of-type(15):checked) input:nth-of-type(16){
+    display: block; 
+}
+section:has(input:nth-of-type(16):checked) input:nth-of-type(17){
+    display: block; 
+}
+section:has(input:nth-of-type(17):checked) input:nth-of-type(18){
+    display: block; 
+}
+section:has(input:nth-of-type(18):checked) input:nth-of-type(19){
+    display: block; 
+} */
+
+
+
+
