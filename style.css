@@ -1,68 +1,117 @@
 /* --i: voor snelheid */
 /* --x: voor x positie */
 /* --Y: voor y positie */
-li:nth-child(1)  { --i:1;  --x:10; --y:46; }
-li:nth-child(2)  { --i:2;  --x:50; --y:68; }
-li:nth-child(3)  { --i:3;  --x:23; --y:23; }
-li:nth-child(4)  { --i:4;  --x:67; --y:97; }
-li:nth-child(6)  { --i:6;  --x:91; --y:24; }
-li:nth-child(5)  { --i:5;  --x:12; --y:56; }
-li:nth-child(7)  { --i:7;  --x:33; --y:89; }
-li:nth-child(8)  { --i:8;  --x:47; --y:35; }
-li:nth-child(10) { --i:10; --x:13; --y:23; }
+/* --c: voor c kleur */ 
 
 
-ul  {
+
+li:nth-child(1)  { --i:1;  --x:0; --y:0; filter: invert(14%) sepia(86%) saturate(6754%) hue-rotate(359deg) brightness(98%) contrast(115%);}
+li:nth-child(2)  { --i:2;  --x:50; --y:68; filter: invert(89%) sepia(26%) saturate(2802%) hue-rotate(114deg) brightness(103%) contrast(101%);}
+li:nth-child(3)  { --i:3;  --x:23; --y:23; filter: invert(10%) sepia(90%) saturate(7456%) hue-rotate(273deg) brightness(101%) contrast(121%);}
+li:nth-child(4)  { --i:4;  --x:67; --y:97; filter: invert(76%) sepia(53%) saturate(598%) hue-rotate(344deg) brightness(100%) contrast(92%);}
+li:nth-child(6)  { --i:6;  --x:91; --y:24; filter: invert(93%) sepia(24%) saturate(629%) hue-rotate(357deg) brightness(93%) contrast(102%);}
+li:nth-child(5)  { --i:5;  --x:12; --y:56; filter: invert(90%) sepia(20%) saturate(900%) hue-rotate(57deg) brightness(101%) contrast(97%);}
+li:nth-child(7)  { --i:7;  --x:33; --y:89; filter: invert(56%) sepia(75%) saturate(6663%) hue-rotate(324deg) brightness(98%) contrast(95%);}
+li:nth-child(8)  { --i:8;  --x:47; --y:35; filter: invert(38%) sepia(100%) saturate(912%) hue-rotate(345deg) brightness(101%) contrast(102%);}
+li:nth-child(10) { --i:10; --x:13; --y:23; filter: invert(48%) sepia(100%) saturate(5349%) hue-rotate(285deg) brightness(95%) contrast(131%);} 
+
+
+
+ul {
     display: grid;
     justify-items: start;
 
-    margin:0;
-    padding:0;
-    list-style:none;
+    margin: 0;
+    padding: 0;
+    list-style: none;
 }
 
 ul li {
-    grid-column-start:1;
-    grid-row-start:1;
+    grid-column-start: 1;
+    grid-row-start: 1;
 }
 
 ul input {
-    display:none;
+    display: none;
 }
 
 input[name="addBird1"]:not(:checked) {
-    display:block;
+    display: block;
+    filter: none;
 }
 
-li:has(input:checked) + li input:not(:checked) {
-    display:block;
+li:has(input:checked)+li input:not(:checked) {
+    display: block;
 }
 
 p {
     display: none;
 }
 
+img {
+    display: none;
+}
 
-input:checked + p {
-    display:block;
+img::after {
+    width: 3%;
+}
+
+
+input:checked+img{
+    display: block;
     animation: flying 1s ease;
-    animation-iteration-count: infinite;
-    font-size:calc(1em * var(--i));
-
+    animation-fill-mode: forwards;
+    font-size: calc(1em * var(--i));
+    width: 3rem;
     position: fixed;
     left: calc(1vw * var(--x));
     top: calc(1dvh * var(--y));
+    
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
+
 }
 
+[type=radio]::before  {
+    content: "";
+    width: 4rem;
+    height: 4rem;
+    background-image: url(./imgs/birdhouse.svg);
+    background-repeat: no-repeat;
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    z-index: -1;
+}
+
+[type=radio] {
+    appearance: none;
+}
+
+.random-color-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 0, 0, 0.5); /* Default semi-transparent red color */
+  }
+  
+  
 @keyframes flying {
     0% {
-        translate: 0 10rem;
+        translate: 0 0rem;
+
     }
 
     100% {
 
-        translate: 0 1rem;
+        translate: 0 10rem;
     }
+}
+
+@keyframes floating {
+    0% {}
 }
 
 /* section:has( input[name^="addBird"]:checked) + article p  {
@@ -202,7 +251,3 @@ section:has(input:nth-of-type(17):checked) input:nth-of-type(18){
 section:has(input:nth-of-type(18):checked) input:nth-of-type(19){
     display: block; 
 } */
-
-
-
-
