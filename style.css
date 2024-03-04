@@ -5,17 +5,53 @@
 
 
 
-li:nth-child(1)  { --i:1;  --x:0; --y:0; filter: invert(14%) sepia(86%) saturate(6754%) hue-rotate(359deg) brightness(98%) contrast(115%);}
-li:nth-child(2)  { --i:2;  --x:50; --y:68; filter: invert(89%) sepia(26%) saturate(2802%) hue-rotate(114deg) brightness(103%) contrast(101%);}
-li:nth-child(3)  { --i:3;  --x:23; --y:23; filter: invert(10%) sepia(90%) saturate(7456%) hue-rotate(273deg) brightness(101%) contrast(121%);}
-li:nth-child(4)  { --i:4;  --x:67; --y:97; filter: invert(76%) sepia(53%) saturate(598%) hue-rotate(344deg) brightness(100%) contrast(92%);}
-li:nth-child(6)  { --i:6;  --x:91; --y:24; filter: invert(93%) sepia(24%) saturate(629%) hue-rotate(357deg) brightness(93%) contrast(102%);}
-li:nth-child(5)  { --i:5;  --x:12; --y:56; filter: invert(90%) sepia(20%) saturate(900%) hue-rotate(57deg) brightness(101%) contrast(97%);}
-li:nth-child(7)  { --i:7;  --x:33; --y:89; filter: invert(56%) sepia(75%) saturate(6663%) hue-rotate(324deg) brightness(98%) contrast(95%);}
-li:nth-child(8)  { --i:8;  --x:47; --y:35; filter: invert(38%) sepia(100%) saturate(912%) hue-rotate(345deg) brightness(101%) contrast(102%);}
-li:nth-child(10) { --i:10; --x:13; --y:23; filter: invert(48%) sepia(100%) saturate(5349%) hue-rotate(285deg) brightness(95%) contrast(131%);} 
+li:nth-child(1)  { --i:1;  --x:0; --y:0;}
+li:nth-child(2)  { --i:5;  --x:0; --y:0;}
+li:nth-child(3)  { --i:8;  --x:0; --y:0;}
+li:nth-child(4)  { --i:12;  --x:0; --y:0; }
+li:nth-child(5)  { --i:99;  --x:0; --y:0; }
+li:nth-child(6)  { --i:35;  --x:0; --y:0; }
+li:nth-child(7)  { --i:21;  --x:0; --y:0; }
+li:nth-child(8)  { --i:60;  --x:0; --y:0; }
+li:nth-child(9)  { --i:22;  --x:0; --y:0; }
+li:nth-child(10) { --i:43; --x:0; --y:0; } 
+li:nth-child(11)  { --i:1;  --x:0; --y:0;}
+li:nth-child(12)  { --i:5;  --x:0; --y:0;}
+li:nth-child(13)  { --i:8;  --x:0; --y:0;}
+li:nth-child(14)  { --i:12;  --x:0; --y:0; }
+li:nth-child(15)  { --i:99;  --x:0; --y:0; }
+li:nth-child(16)  { --i:35;  --x:0; --y:0; }
+li:nth-child(17)  { --i:21;  --x:0; --y:0; }
+li:nth-child(18)  { --i:60;  --x:0; --y:0; }
+li:nth-child(19)  { --i:22;  --x:0; --y:0; }
+li:nth-child(20) { --i:43; --x:0; --y:0; } 
+li:nth-child(21)  { --i:1;  --x:0; --y:0;}
+li:nth-child(22)  { --i:5;  --x:0; --y:0;}
+li:nth-child(23)  { --i:8;  --x:0; --y:0;}
+li:nth-child(24)  { --i:12;  --x:0; --y:0; }
+li:nth-child(25)  { --i:99;  --x:0; --y:0; }
+li:nth-child(26)  { --i:35;  --x:0; --y:0; }
+li:nth-child(27)  { --i:21;  --x:0; --y:0; }
+li:nth-child(28)  { --i:60;  --x:0; --y:0; }
+li:nth-child(29)  { --i:22;  --x:0; --y:0; }
+li:nth-child(30) { --i:43; --x:0; --y:0; } 
+li:nth-child(31)  { --i:1;  --x:0; --y:0;}
+li:nth-child(32)  { --i:5;  --x:0; --y:0;}
+li:nth-child(33)  { --i:8;  --x:0; --y:0;}
+li:nth-child(34)  { --i:12;  --x:0; --y:0; }
+li:nth-child(35)  { --i:99;  --x:0; --y:0; }
+li:nth-child(36)  { --i:35;  --x:0; --y:0; }
+li:nth-child(37)  { --i:21;  --x:0; --y:0; }
+li:nth-child(38)  { --i:60;  --x:0; --y:0; }
+li:nth-child(39)  { --i:22;  --x:0; --y:0; }
+li:nth-child(40) { --i:43; --x:0; --y:0; } 
 
+/* invert(14%) sepia(86%) saturate(6754%) hue-rotate(359deg) brightness(98%) contrast(115%); */
 
+body {
+    background-image: url(./imgs/background.svg);
+    background-size: cover;
+}
 
 ul {
     display: grid;
@@ -31,16 +67,30 @@ ul li {
     grid-row-start: 1;
 }
 
-ul input {
+ul input[name="yellowbird1"]:not(:checked) {
     display: none;
 }
 
-input[name="addBird1"]:not(:checked) {
+
+ul input[name="addBird1"]:not(:checked) {
     display: block;
-    filter: none;
+}
+ul input[name="addBird21"]:not(:checked) {
+    display: block;
 }
 
-li:has(input:checked)+li input:not(:checked) {
+ul input[name="yellowbird1"]{
+    background-image: url(./imgs/birdie.png);
+    width: 50px;
+    height: 50px;
+    background-size: cover;
+}
+
+ul input[name="yellowbird1"]:checked{
+    display: none;
+}
+
+ul  li:has(input:checked)+li input:not(:checked) {
     display: block;
 }
 
@@ -56,36 +106,92 @@ img::after {
     width: 3%;
 }
 
-
-input:checked+img{
+ul:first-of-type  input:checked+img{
     display: block;
-    animation: flying 1s ease;
-    animation-fill-mode: forwards;
+    animation: 
+        flyingHouse1 1s linear, 
+        spinning 5s -2.5s linear infinite;
+
     font-size: calc(1em * var(--i));
+    offset-path: circle(20% at center);
     width: 3rem;
     position: fixed;
-    left: calc(1vw * var(--x));
+    left: calc(13vw * var(--x));
     top: calc(1dvh * var(--y));
-    
-    -webkit-transform: scaleX(-1);
-    transform: scaleX(-1);
-
+    /* filter: hue-rotate(calc(263deg * var(--i))); */
+    offset-position: auto;
+ 
 }
 
-[type=radio]::before  {
+/* ul:nth-of-type(2) input:checked+img{
+    display: block;
+    animation: 
+        flyingHouse2 1s linear, 
+        spinning 2s -0.5s linear infinite;
+
+    font-size: calc(1em * var(--i));
+    offset-path: circle(10% at center);
+    width: 3rem;
+    position: fixed;
+    left: calc(13vw * var(--x));
+    top: calc(1dvh * var(--y));
+    /* filter: hue-rotate(calc(263deg * var(--i))); 
+    offset-position: auto;
+}
+*/
+
+ul:nth-of-type(2) input:first-of-type + input:nth-of-type(2){
+    display: block;
+    animation: 
+        flyingHouse2 1s linear, 
+        spinning 2s -0.5s linear infinite;
+
+    font-size: calc(1em * var(--i));
+    offset-path: circle(10% at center);
+    width: 3rem;
+    position: fixed;
+    left: calc(13vw * var(--x));
+    top: calc(1dvh * var(--y));
+    /* filter: hue-rotate(calc(263deg * var(--i))); */
+    offset-position: auto;
+}
+
+
+ul [type=radio]::before  {
     content: "";
     width: 4rem;
     height: 4rem;
     background-image: url(./imgs/birdhouse.svg);
     background-repeat: no-repeat;
     position: absolute;
-    top: 2px;
-    left: 2px;
+    top: 20px;
+    left: 40px;
     z-index: -1;
 }
 
-[type=radio] {
+ul [type=radio]:hover ~ div {
+    opacity: 1;
+    transition: 0.5s;
+}
+
+
+ul  [type="radio"]:focus-visible:before {
+    filter: drop-shadow(0 -6mm 4mm rgb(160, 0, 210));
+        opacity: 0.5;
+}
+
+ul  [type=radio] {
     appearance: none;
+}
+
+ul [type=checkbox]{
+    appearance: none;
+}
+
+ul:nth-of-type(2n) {
+    position: fixed;
+    left: 300px;
+    top: 0px;
 }
 
 .random-color-overlay {
@@ -96,31 +202,73 @@ input:checked+img{
     height: 100%;
     background-color: rgba(255, 0, 0, 0.5); /* Default semi-transparent red color */
   }
+
+h2:first-of-type {
+    margin: 0;
+    translate: 0 80px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: white;
+    position: absolute;
+    z-index: 1;
+    font-size: 1rem;
+    left: 1rem;
+}
+
+h2:nth-of-type(2){
+    margin: 0;
+    translate: 0 80px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: white;
+    -webkit-text-stroke: 7px black;
+    position: absolute;
+    font-size: 1rem;
+    left: 1rem;
+}
+
+div { 
+    opacity: 0;
+}
+
+
+
   
-  
-@keyframes flying {
+@keyframes flyingHouse1 {
     0% {
-        translate: 0 0rem;
+        translate: -28rem -22rem;
 
     }
 
     100% {
 
-        translate: 0 10rem;
+        translate: 0 0rem;
     }
 }
 
-@keyframes floating {
-    0% {}
+@keyframes flyingHouse2 {
+    0% {
+        translate: -25rem -28rem;
+
+    }
+
+    100% {
+
+        translate: 0 0rem;
+    }
 }
 
+@keyframes spinning {
+    
+    to {
+        offset-distance: 100%;
+        }
+  } 
 /* section:has( input[name^="addBird"]:checked) + article p  {
     display: block;
 } */
 
 /* section:has( input[name="addBird2"]:checked) + article p:nth-of-type(2) {
     display: block;
-} */
+}
 
 
 
