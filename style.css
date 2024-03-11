@@ -1,252 +1,406 @@
-/* --i: voor snelheid */
-/* --x: voor x positie */
-/* --Y: voor y positie */
-/* --c: voor c kleur */ 
 
+:root {
+    /* cirkel-radius */
+    
 
-
-li:nth-child(1)  { --i:1;  --x:0; --y:0;}
-li:nth-child(2)  { --i:5;  --x:0; --y:0;}
-li:nth-child(3)  { --i:8;  --x:0; --y:0;}
-li:nth-child(4)  { --i:12;  --x:0; --y:0; }
-li:nth-child(5)  { --i:99;  --x:0; --y:0; }
-li:nth-child(6)  { --i:35;  --x:0; --y:0; }
-li:nth-child(7)  { --i:21;  --x:0; --y:0; }
-li:nth-child(8)  { --i:60;  --x:0; --y:0; }
-li:nth-child(9)  { --i:22;  --x:0; --y:0; }
-li:nth-child(10) { --i:43; --x:0; --y:0; } 
-li:nth-child(11)  { --i:1;  --x:0; --y:0;}
-li:nth-child(12)  { --i:5;  --x:0; --y:0;}
-li:nth-child(13)  { --i:8;  --x:0; --y:0;}
-li:nth-child(14)  { --i:12;  --x:0; --y:0; }
-li:nth-child(15)  { --i:99;  --x:0; --y:0; }
-li:nth-child(16)  { --i:35;  --x:0; --y:0; }
-li:nth-child(17)  { --i:21;  --x:0; --y:0; }
-li:nth-child(18)  { --i:60;  --x:0; --y:0; }
-li:nth-child(19)  { --i:22;  --x:0; --y:0; }
-li:nth-child(20) { --i:43; --x:0; --y:0; } 
-li:nth-child(21)  { --i:1;  --x:0; --y:0;}
-li:nth-child(22)  { --i:5;  --x:0; --y:0;}
-li:nth-child(23)  { --i:8;  --x:0; --y:0;}
-li:nth-child(24)  { --i:12;  --x:0; --y:0; }
-li:nth-child(25)  { --i:99;  --x:0; --y:0; }
-li:nth-child(26)  { --i:35;  --x:0; --y:0; }
-li:nth-child(27)  { --i:21;  --x:0; --y:0; }
-li:nth-child(28)  { --i:60;  --x:0; --y:0; }
-li:nth-child(29)  { --i:22;  --x:0; --y:0; }
-li:nth-child(30) { --i:43; --x:0; --y:0; } 
-li:nth-child(31)  { --i:1;  --x:0; --y:0;}
-li:nth-child(32)  { --i:5;  --x:0; --y:0;}
-li:nth-child(33)  { --i:8;  --x:0; --y:0;}
-li:nth-child(34)  { --i:12;  --x:0; --y:0; }
-li:nth-child(35)  { --i:99;  --x:0; --y:0; }
-li:nth-child(36)  { --i:35;  --x:0; --y:0; }
-li:nth-child(37)  { --i:21;  --x:0; --y:0; }
-li:nth-child(38)  { --i:60;  --x:0; --y:0; }
-li:nth-child(39)  { --i:22;  --x:0; --y:0; }
-li:nth-child(40) { --i:43; --x:0; --y:0; } 
-
-/* invert(14%) sepia(86%) saturate(6754%) hue-rotate(359deg) brightness(98%) contrast(115%); */
-
-body {
-    background-image: url(./imgs/background.svg);
-    background-size: cover;
+    /* HuisAfstand */ 
+   
 }
 
-ul {
-    display: grid;
-    justify-items: start;
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+body {
+    margin:0;
+    height:100dvh;
+    overflow: hidden;
+}
+
+body::before {
+    content:"";
+    position: fixed;
+    width:40vmin;
+    height:40vmin;
+
+    left:calc(50vw - 20vmin);
+    top:calc(50vh - 20vmin);
+/* 
+    box-shadow: inset 0 0 0 1px black;
+    border-radius: 50%;
+    background-color: #f09; */
+}
+
+body + img { 
+    position: absolute;
+}
+
+nav {
+    --navGap: 2em;
+    --navPadding:1em;
+
+    display: flex;
+    padding:var(--navPadding);
+    gap: var(--navGap);
+}
+
+/* het huisje */
+ul:first-of-type {
+    --houseSize: 5em;
+    --birdSize:calc( var(--houseSize) - var(--housePadding) * 2);
+    --houseTop: calc( var(--navPadding) + var(--houseSize) * .5 );
+    --housePadding: 1em; 
+
+    --houseLeft: calc( 
+            var(--navPadding) 
+            + 
+            (var(--i) - .5) * var(--houseSize) 
+            + 
+            (var(--i) - 1) * var(--navGap) 
+        ); 
+
+
+    position: relative;
+
+    /* background-color: red; */
+    background-image: 
+        url("./birdhouse-hover.svg"),
+        url("./birdhouse.svg");
+    background-repeat: no-repeat;
+    background-position:center;
+    background-size: 0 0, contain;
 
     margin: 0;
     padding: 0;
     list-style: none;
+    
+    width: var(--houseSize);
+    aspect-ratio: 1;
+
+    display: grid;
 }
 
-ul li {
-    grid-column-start: 1;
-    grid-row-start: 1;
-}
+ul:nth-of-type(2) {
+    --houseSize: 5em;
+    --birdSize:calc( var(--houseSize) - var(--housePadding) * 2);
+    --houseTop: calc( var(--navPadding) + var(--houseSize) * .5 );
+    --housePadding: 1em; 
 
-ul input[name="yellowbird1"]:not(:checked) {
-    display: none;
-}
-
-
-ul input[name="addBird1"]:not(:checked) {
-    display: block;
-}
-ul input[name="addBird21"]:not(:checked) {
-    display: block;
-}
-
-ul input[name="yellowbird1"]{
-    background-image: url(./imgs/birdie.png);
-    width: 50px;
-    height: 50px;
-    background-size: cover;
-}
-
-ul input[name="yellowbird1"]:checked{
-    display: none;
-}
-
-ul  li:has(input:checked)+li input:not(:checked) {
-    display: block;
-}
-
-p {
-    display: none;
-}
-
-img {
-    display: none;
-}
-
-img::after {
-    width: 3%;
-}
-
-ul:first-of-type  input:checked+img{
-    display: block;
-    animation: 
-        flyingHouse1 1s linear, 
-        spinning 5s -2.5s linear infinite;
-
-    font-size: calc(1em * var(--i));
-    offset-path: circle(20% at center);
-    width: 3rem;
-    position: fixed;
-    left: calc(13vw * var(--x));
-    top: calc(1dvh * var(--y));
-    /* filter: hue-rotate(calc(263deg * var(--i))); */
-    offset-position: auto;
- 
-}
-
-/* ul:nth-of-type(2) input:checked+img{
-    display: block;
-    animation: 
-        flyingHouse2 1s linear, 
-        spinning 2s -0.5s linear infinite;
-
-    font-size: calc(1em * var(--i));
-    offset-path: circle(10% at center);
-    width: 3rem;
-    position: fixed;
-    left: calc(13vw * var(--x));
-    top: calc(1dvh * var(--y));
-    /* filter: hue-rotate(calc(263deg * var(--i))); 
-    offset-position: auto;
-}
-*/
-
-ul:nth-of-type(2) input:first-of-type + input:nth-of-type(2){
-    display: block;
-    animation: 
-        flyingHouse2 1s linear, 
-        spinning 2s -0.5s linear infinite;
-
-    font-size: calc(1em * var(--i));
-    offset-path: circle(10% at center);
-    width: 3rem;
-    position: fixed;
-    left: calc(13vw * var(--x));
-    top: calc(1dvh * var(--y));
-    /* filter: hue-rotate(calc(263deg * var(--i))); */
-    offset-position: auto;
-}
+    --houseLeft: calc( 
+            var(--navPadding) 
+            + 
+            (var(--i) - .5) * var(--houseSize) 
+            + 
+            (var(--i) - 1) * var(--navGap) 
+        ); 
 
 
-ul [type=radio]::before  {
-    content: "";
-    width: 4rem;
-    height: 4rem;
-    background-image: url(./imgs/birdhouse.svg);
+    position: relative;
+
+    /* background-color: red; */
+    background-image: 
+        url("./birdhouse-house_2.svg"),
+        url("./birdhouse-2.svg");
     background-repeat: no-repeat;
-    position: absolute;
-    top: 20px;
-    left: 40px;
-    z-index: -1;
+    background-position:center;
+    background-size: 0 0, contain;
+
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    
+    width: var(--houseSize);
+    aspect-ratio: 1;
+
+    display: grid;
 }
 
-ul [type=radio]:hover ~ div {
-    opacity: 1;
-    transition: 0.5s;
+ul:nth-of-type(3) {
+    --houseSize: 5em;
+    --birdSize:calc( var(--houseSize) - var(--housePadding) * 2);
+    --houseTop: calc( var(--navPadding) + var(--houseSize) * .5 );
+    --housePadding: 1em; 
+
+    --houseLeft: calc( 
+            var(--navPadding) 
+            + 
+            (var(--i) - .5) * var(--houseSize) 
+            + 
+            (var(--i) - 1) * var(--navGap) 
+        ); 
+
+
+    position: relative;
+
+    /* background-color: red; */
+    background-image: 
+        url("./birdhouse-house_3.svg"),
+        url("./birdhouse-3.svg");
+    background-repeat: no-repeat;
+    background-position:center;
+    background-size: 0 0, contain;
+
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    
+    width: var(--houseSize);
+    aspect-ratio: 1;
+
+    display: grid;
 }
 
 
-ul  [type="radio"]:focus-visible:before {
-    filter: drop-shadow(0 -6mm 4mm rgb(160, 0, 210));
-        opacity: 0.5;
+ul:nth-of-type(1) {
+    --i:1;
+    --radius: 20vmin;
 }
 
-ul  [type=radio] {
+ul:nth-of-type(2) {
+    --i:2;
+    --radius: 27vmin;
+}
+
+ul:nth-of-type(3) {
+    --i:3;
+    --radius: 35vmin;
+}
+
+ul:hover {
+    background-size: contain;
+}
+
+
+/* vogel wrapper */
+li {
+    grid-area: 1/1;
+    padding: var(--housePadding);
+    pointer-events: none;
+
+    display:grid;
+}
+
+
+/* labels and checkboxes */
+li label, 
+li input {
     appearance: none;
 }
 
-ul [type=checkbox]{
-    appearance: none;
+li label {
+    grid-area: 1/1;
+    width: var(--birdSize);
+    aspect-ratio: 1;
+    pointer-events: all;
+    cursor: pointer;
 }
 
-ul:nth-of-type(2n) {
-    position: fixed;
-    left: 300px;
-    top: 0px;
-}
-
-.random-color-overlay {
+li input {
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(255, 0, 0, 0.5); /* Default semi-transparent red color */
-  }
+    left: -9999em;
+}
 
-h2:first-of-type {
-    margin: 0;
-    translate: 0 80px;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    color: white;
+
+/* trigger label  */
+li label:nth-of-type(1) {
+    /* nada */
+}
+
+li label:nth-of-type(1):has(:checked) {
     position: absolute;
-    z-index: 1;
-    font-size: 1rem;
-    left: 1rem;
-}
-
-h2:nth-of-type(2){
-    margin: 0;
-    translate: 0 80px;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    color: white;
-    -webkit-text-stroke: 7px black;
-    position: absolute;
-    font-size: 1rem;
-    left: 1rem;
-}
-
-div { 
-    opacity: 0;
+    left:-9999em;
 }
 
 
+/* vogel label */
+ul:first-of-type  label:nth-of-type(2) {
+    background-image: url("./birdie.png");
+    background-size: contain;
+    background-position: center;
+    /* background-color: #f096; */
 
-  
+    display:none;
+    cursor: url("https://cdn.custom-cursor.com/db/pointer/32/Gun_Sight.png"), pointer !important;
+}
+
+
+/* Tweede vogel */
+ul:nth-of-type(2) label:nth-of-type(2) {
+    background-image: url("./birdie2.png");
+    background-size: contain;
+    background-position: center;
+    /* background-color: #f096; */
+
+    display:none;
+    cursor: url("https://cdn.custom-cursor.com/db/pointer/32/Gun_Sight.png"), pointer !important;
+}
+
+/* Derde vogel */
+ul:nth-of-type(3) label:nth-of-type(2) {
+    background-image: url("./birdie3.png");
+    background-size: contain;
+    background-position: center;
+    /* background-color: #f096; */
+
+    display:none;
+    cursor: url("https://cdn.custom-cursor.com/db/pointer/32/Gun_Sight.png"), pointer !important;
+}
+
+
+
+
+/* Eerste vogel */ 
+ul:first-of-type label:nth-of-type(1):has(:checked) + label:nth-of-type(2) {
+    display:block;
+    position: relative;
+    animation: 
+        vliegNaarCirkel 1.5s ease-in forwards,
+        rondjesVliegen 10s 1.5s linear infinite,
+        dead 2s paused;
+
+    /* animation: flyingHouse1 1s linear, 
+    spinning 10s -5s linear infinite, 
+    dead 2s linear paused; */
+    /* animation-iteration-count: 1, infinite, 1; */
+    /* animation-fill-mode: both; */
+
+    /* offset-path: circle(40vmin at center); */
+}
+
+
+ul:first-of-type li label:nth-of-type(1):has(:checked) +  label:nth-of-type(2):has(:checked)  {
+    animation-play-state: paused, paused, running;
+    animation-fill-mode: forwards;
+    animation-iteration-count: 1;
+    filter: grayscale(1);
+}
+
+/* Tweede vogel */ 
+ul:nth-of-type(2) label:nth-of-type(1):has(:checked) + label:nth-of-type(2) {
+    display:block;
+    position: relative;
+    animation: 
+        vliegNaarCirkel 1.5s ease-in forwards,
+        rondjesVliegen 5s 1.5s linear infinite,
+        dead 2s paused;
+
+    /* animation: flyingHouse1 1s linear, 
+    spinning 10s -5s linear infinite, 
+    dead 2s linear paused; */
+    /* animation-iteration-count: 1, infinite, 1; */
+    /* animation-fill-mode: both; */
+
+    /* offset-path: circle(40vmin at center); */
+}
+
+
+ul:nth-of-type(2) li label:nth-of-type(1):has(:checked) +  label:nth-of-type(2):has(:checked)  {
+    animation-play-state: paused, paused, running;
+    animation-fill-mode: forwards;
+    animation-iteration-count: 1;
+    filter: grayscale(1);
+}
+
+/* Derde vogel */ 
+
+ul:nth-of-type(3) label:nth-of-type(1):has(:checked) + label:nth-of-type(2) {
+    display:block;
+    position: relative;
+    animation: 
+        vliegNaarCirkel .5s ease-in forwards,
+        rondjesVliegen 2s .5s linear infinite,
+        dead 2s paused;
+
+    /* animation: flyingHouse1 1s linear, 
+    spinning 10s -5s linear infinite, 
+    dead 2s linear paused; */
+    /* animation-iteration-count: 1, infinite, 1; */
+    /* animation-fill-mode: both; */
+
+    /* offset-path: circle(40vmin at center); */
+}
+
+
+ul:nth-of-type(3) li label:nth-of-type(1):has(:checked) +  label:nth-of-type(2):has(:checked)  {
+    animation-play-state: paused, paused, running;
+    animation-fill-mode: forwards;
+    animation-iteration-count: 1;
+    filter: grayscale(1);
+}
+
+
+
+
+@keyframes vliegNaarCirkel {
+    100% {
+        transform: translate(
+            calc(50vw - var(--houseLeft)),
+            calc(50vh - var(--radius) - var(--houseTop))
+        );
+        pointer-events: none;
+    }
+}
+
+@keyframes rondjesVliegen {
+    0% {
+        transform: 
+            translateX( calc(50vw - var(--houseLeft)) )
+            translateY( calc(50vh - var(--houseTop)) )
+            rotate(0deg)
+            translateY( calc(var(--radius) * -1) );
+            pointer-events: all;
+
+    } 
+    100% {
+        transform: 
+        translateX( calc(50vw - var(--houseLeft)) )
+        translateY( calc(50vh - var(--houseTop)) )
+        rotate(360deg)
+        translateY( calc(var(--radius) * -1) );
+        pointer-events: all;
+    }
+}
+
+
+
+@keyframes spinning {
+
+    to {
+        offset-distance: 100%;
+    }
+}
+
+
 @keyframes flyingHouse1 {
     0% {
-        translate: -28rem -22rem;
-
+        translate: -70vh -22vw;
     }
 
     100% {
-
         translate: 0 0rem;
     }
+}
+
+
+@keyframes dead {
+    
+    0%  {
+        top: 0;
+    }
+
+    90% {
+        top: 200vh;
+    }
+    100%{
+        display: none;
+        top: 200vh;
+    }
+    
 }
 
 @keyframes flyingHouse2 {
     0% {
-        translate: -25rem -28rem;
+        translate: -60vh -22vw;
 
     }
 
@@ -256,146 +410,42 @@ div {
     }
 }
 
-@keyframes spinning {
-    
-    to {
-        offset-distance: 100%;
+
+@media screen and (max-width: 768px) {
+    @keyframes vliegNaarCirkel {
+        100% {
+            transform: translate(
+                calc(50vw - var(--houseLeft)),
+                calc(50vh - var(--radius) - var(--houseTop)) /* Aanpassing van de verticale positie voor mobiele apparaten */
+            );
         }
-  } 
-/* section:has( input[name^="addBird"]:checked) + article p  {
+    }
+}
+
+
+
+
+
+
+/* li input:nth-of-type(1):checked~input:nth-of-type(2):checked {
     display: block;
+    animation: dead 2s ease-in-out;
+    animation-fill-mode: forwards;
+    transition: 1s;
+    filter: grayscale(0);
 } */
 
-/* section:has( input[name="addBird2"]:checked) + article p:nth-of-type(2) {
-    display: block;
-}
+/* ul:nth-of-type(2) li input:nth-of-type(2) {
+    width: 4rem;
+    height: 4rem;
+    background-image: url(./birdie.png);
+    background-size: cover;
 
+    animation: flyingHouse2 1s linear, spinning 10s -5s linear infinite, dead 2s linear paused;
+    animation-iteration-count: 1, infinite, 1;
+    animation-fill-mode: both;
 
-
-/* section input:nth-of-type(2) {
-    display: none; 
-}
-
-section input:nth-of-type(3) {
-    display: none; 
-}
-
-section input:nth-of-type(4) {
-    display: none; 
-}
-
-section input:nth-of-type(5) {
-    display: none; 
-}
-
-section input:nth-of-type(6) {
-    display: none; 
-}
-
-section input:nth-of-type(7) {
-    display: none; 
-}
-
-section input:nth-of-type(8) {
-    display: none; 
-}
-
-section input:nth-of-type(9) {
-    display: none; 
-}
-
-section input:nth-of-type(10) {
-    display: none; 
-}
-
-section input:nth-of-type(11) {
-    display: none; 
-}
-
-section input:nth-of-type(12) {
-    display: none; 
-}
-
-section input:nth-of-type(13) {
-    display: none; 
-}
-
-section input:nth-of-type(14) {
-    display: none; 
-}
-
-section input:nth-of-type(15) {
-    display: none; 
-}
-
-section input:nth-of-type(16) {
-    display: none; 
-}
-
-section input:nth-of-type(17) {
-    display: none; 
-}
-
-section input:nth-of-type(18) {
-    display: none; 
-}
-
-section input:nth-of-type(19) {
-    display: none; 
+    offset-path: circle(10% at center);
 } */
 
 
-/* section:has(input:first-of-type:checked) input:nth-of-type(2){
-    display: block; 
-}
-section:has(input:nth-of-type(2):checked) input:nth-of-type(3){
-    display: block; 
-}
-section:has(input:nth-of-type(3):checked) input:nth-of-type(4){
-    display: block; 
-}
-section:has(input:nth-of-type(4):checked) input:nth-of-type(5){
-    display: block; 
-}
-section:has(input:nth-of-type(5):checked) input:nth-of-type(6){
-    display: block; 
-}
-section:has(input:nth-of-type(6):checked) input:nth-of-type(7){
-    display: block; 
-}
-section:has(input:nth-of-type(7):checked) input:nth-of-type(8){
-    display: block; 
-}
-section:has(input:nth-of-type(8):checked) input:nth-of-type(9){
-    display: block; 
-}
-section:has(input:nth-of-type(9):checked) input:nth-of-type(10){
-    display: block; 
-}
-section:has(input:nth-of-type(10):checked) input:nth-of-type(11){
-    display: block; 
-}
-section:has(input:nth-of-type(11):checked) input:nth-of-type(12){
-    display: block; 
-}
-section:has(input:nth-of-type(12):checked) input:nth-of-type(13){
-    display: block; 
-}
-section:has(input:nth-of-type(13):checked) input:nth-of-type(14){
-    display: block; 
-}
-section:has(input:nth-of-type(14):checked) input:nth-of-type(15){
-    display: block; 
-}
-section:has(input:nth-of-type(15):checked) input:nth-of-type(16){
-    display: block; 
-}
-section:has(input:nth-of-type(16):checked) input:nth-of-type(17){
-    display: block; 
-}
-section:has(input:nth-of-type(17):checked) input:nth-of-type(18){
-    display: block; 
-}
-section:has(input:nth-of-type(18):checked) input:nth-of-type(19){
-    display: block; 
-} */

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Laag_2" data-name="Laag 2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 750 500">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: url(#linear-gradient);
+        stroke-width: 0px;
+      }
+    </style>
+    <linearGradient id="linear-gradient" x1="375" y1="0" x2="375" y2="500" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#3d72ec"/>
+      <stop offset=".11" stop-color="#3d79ec" stop-opacity=".93"/>
+      <stop offset=".31" stop-color="#3d8dec" stop-opacity=".75"/>
+      <stop offset=".6" stop-color="#3dacec" stop-opacity=".45"/>
+      <stop offset=".96" stop-color="#3dd8ec" stop-opacity=".05"/>
+      <stop offset="1" stop-color="#3dddec" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <g id="BACKGROUND">
+    <rect class="cls-1" width="750" height="500"/>
+  </g>
+</svg>
