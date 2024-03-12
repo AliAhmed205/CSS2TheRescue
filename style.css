@@ -15,6 +15,13 @@ body {
     margin:0;
     height:100dvh;
     overflow: hidden;
+    background-color: rgb(97, 163, 255);
+    transition: 1s all;
+}
+
+body:has(main > input[name="dayAndNight"]:checked) {
+    background-color: rgb(0, 0, 66);
+    transition: 1s 2s all;
 }
 
 body::before {
@@ -43,6 +50,177 @@ nav {
     padding:var(--navPadding);
     gap: var(--navGap);
 }
+
+/* Achtergrond */ 
+
+main > input {
+    position: absolute;
+}
+
+
+
+
+body:has(main > input:checked) main >  img:nth-of-type(1) {
+    bottom: -30rem;
+    transition: 1s 0.1s;
+}
+body:has(main > input:checked) main >  img:nth-of-type(2) {
+    bottom: -30rem;
+    transition: 1s 0.2s;
+}
+
+body:has(main > input:checked) main > img:nth-of-type(3) {
+    bottom: -30rem;
+    transition: 1s 0.3s;
+}
+
+body:has(main > input:checked) main >  img:nth-of-type(4) {
+    top: -10rem;
+    transition: 1s 0.5s;
+}
+
+body:has(main > input:checked) main >  img:nth-of-type(5) {
+    top: -10rem;
+    transition: 1s 0.6s;
+}
+
+body:has(main > input:checked) main >  img:nth-of-type(6) {
+    top: -10rem;
+    transition: 1s 0.7s;
+}
+
+body:has(main > input:checked) main >  img:nth-of-type(7) {
+    top: -10rem;
+    transition: 1s 0.8s;
+}
+
+body:has(main > input:checked) main >  img:nth-of-type(8) {
+    top: -10rem;
+    transition: 1s;
+    transition: 1s 0.9s;
+}
+
+
+body:has(main > input:checked) main >  img:nth-of-type(9) {
+    filter: contrast(10);
+    filter: grayscale(1);
+    left: 25%;
+    width: 50%;
+    top: 3%;
+    transition: 1s 3s all;
+} 
+
+body:has(main > input[name="dayAndNight"]:checked) main nav ul li label:first-of-type {
+    pointer-events: none;
+}
+
+body:has(main > input[name="dayAndNight"]:checked) main nav ul {
+filter: brightness(20%);
+transition: 1s 2.5s all;
+}
+
+
+main > img {
+    pointer-events: none;
+}
+
+
+
+
+main >  img:nth-of-type(1) {
+    position: absolute;
+    bottom: 0;
+    opacity: 0.5;
+    width: 70%;
+    transition: 0.5s;
+}
+
+main >  img:nth-of-type(2) {
+    position: absolute;
+    bottom: 0;
+    opacity: 0.5;
+    width: 100%;
+    right: 0;
+    transition: 0.5s;
+
+}
+
+main >  img:nth-of-type(3) {
+    position: absolute;
+    bottom: 0;
+    opacity: 0.5;
+    width: 100%;
+    left: 0;
+    transition: 0.5s;
+
+}
+
+main >  img:nth-of-type(4) {
+    position: absolute;
+    top: 20%;
+    left: 90%;
+    width: 300px;
+    z-index: 1;
+    animation: movingClouds 25s infinite alternate-reverse; 
+    transition: 1s;
+}
+
+main >  img:nth-of-type(5) {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    right: 0;
+    width: 300px;
+    z-index: 1;
+    animation: movingClouds 30s infinite  alternate-reverse;
+    transition: 1s;
+
+}
+
+main >  img:nth-of-type(6) {
+    position: absolute;
+    top: 30%;
+    left: 15%;
+    right: 0;
+    width: 300px;
+    z-index: 1;
+    animation: movingClouds 70s infinite  alternate-reverse;
+    transition: 1s;
+
+}
+
+main >  img:nth-of-type(7) {
+    position: absolute;
+    top: 20%;
+    right: 20%;
+    width: 200px;
+    z-index: 1;
+    animation: movingClouds 50s infinite  alternate-reverse;
+    transition: 1s;
+
+}
+main >  img:nth-of-type(8) {
+    position: absolute;
+    top: 20%;
+    right: 90%;
+    width: 200px;
+    z-index: 1;
+    animation: movingClouds 30s infinite  alternate-reverse;
+    transition: 1s;
+
+}
+
+main >  img:nth-of-type(9) {
+    position: absolute;
+    top: 10%;
+    left: 60%;
+    width: 20%;
+    transition: 0.5s all;
+    z-index: -1;
+    transition: 1s;
+}
+
+
 
 /* het huisje */
 ul:first-of-type {
@@ -257,14 +435,6 @@ ul:first-of-type label:nth-of-type(1):has(:checked) + label:nth-of-type(2) {
         vliegNaarCirkel 1.5s ease-in forwards,
         rondjesVliegen 10s 1.5s linear infinite,
         dead 2s paused;
-
-    /* animation: flyingHouse1 1s linear, 
-    spinning 10s -5s linear infinite, 
-    dead 2s linear paused; */
-    /* animation-iteration-count: 1, infinite, 1; */
-    /* animation-fill-mode: both; */
-
-    /* offset-path: circle(40vmin at center); */
 }
 
 
@@ -272,7 +442,9 @@ ul:first-of-type li label:nth-of-type(1):has(:checked) +  label:nth-of-type(2):h
     animation-play-state: paused, paused, running;
     animation-fill-mode: forwards;
     animation-iteration-count: 1;
-    filter: grayscale(1);
+    filter:     
+    grayscale(1)
+    hue-rotate(150deg);
 }
 
 /* Tweede vogel */ 
@@ -281,16 +453,8 @@ ul:nth-of-type(2) label:nth-of-type(1):has(:checked) + label:nth-of-type(2) {
     position: relative;
     animation: 
         vliegNaarCirkel 1.5s ease-in forwards,
-        rondjesVliegen 5s 1.5s linear infinite,
+        rondjesVliegen 7s 1.5s linear infinite,
         dead 2s paused;
-
-    /* animation: flyingHouse1 1s linear, 
-    spinning 10s -5s linear infinite, 
-    dead 2s linear paused; */
-    /* animation-iteration-count: 1, infinite, 1; */
-    /* animation-fill-mode: both; */
-
-    /* offset-path: circle(40vmin at center); */
 }
 
 
@@ -298,7 +462,9 @@ ul:nth-of-type(2) li label:nth-of-type(1):has(:checked) +  label:nth-of-type(2):
     animation-play-state: paused, paused, running;
     animation-fill-mode: forwards;
     animation-iteration-count: 1;
-    filter: grayscale(1);
+    filter: 
+    grayscale(1), 
+    hue-rotate(150deg);
 }
 
 /* Derde vogel */ 
@@ -307,17 +473,9 @@ ul:nth-of-type(3) label:nth-of-type(1):has(:checked) + label:nth-of-type(2) {
     display:block;
     position: relative;
     animation: 
-        vliegNaarCirkel .5s ease-in forwards,
-        rondjesVliegen 2s .5s linear infinite,
+        vliegNaarCirkel 1.5s ease-in forwards,
+        rondjesVliegen 5s 1.5s linear infinite,
         dead 2s paused;
-
-    /* animation: flyingHouse1 1s linear, 
-    spinning 10s -5s linear infinite, 
-    dead 2s linear paused; */
-    /* animation-iteration-count: 1, infinite, 1; */
-    /* animation-fill-mode: both; */
-
-    /* offset-path: circle(40vmin at center); */
 }
 
 
@@ -326,6 +484,17 @@ ul:nth-of-type(3) li label:nth-of-type(1):has(:checked) +  label:nth-of-type(2):
     animation-fill-mode: forwards;
     animation-iteration-count: 1;
     filter: grayscale(1);
+}
+
+
+
+@keyframes movingClouds { 
+    from {
+        translate: 0 0;
+    }
+    to {
+        translate: -20rem 0;
+    }
 }
 
 
@@ -389,11 +558,13 @@ ul:nth-of-type(3) li label:nth-of-type(1):has(:checked) +  label:nth-of-type(2):
     }
 
     90% {
-        top: 200vh;
+        top: 30vh;
+        opacity: 0;
     }
     100%{
         display: none;
-        top: 200vh;
+        top: 30vh;
+        opacity: 0;
     }
     
 }
