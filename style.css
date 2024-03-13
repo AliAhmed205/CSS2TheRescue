@@ -1,4 +1,7 @@
-
+@font-face {
+    font-family: cloudy;
+    src: url("./Cloudy-0W244.ttf");
+}
 :root {
     /* cirkel-radius */
     
@@ -11,31 +14,17 @@
     box-sizing: border-box;
 }
 
+html {
+    height:100dvh;
+    overflow: hidden;
+}
+
 body {
     margin:0;
-    height:100dvh;
+    height:100%;
     overflow: hidden;
     background-color: rgb(97, 163, 255);
     transition: 1s all;
-}
-
-body:has(main > input[name="dayAndNight"]:checked) {
-    background-color: rgb(0, 0, 66);
-    transition: 1s 2s all;
-}
-
-body::before {
-    content:"";
-    position: fixed;
-    width:40vmin;
-    height:40vmin;
-
-    left:calc(50vw - 20vmin);
-    top:calc(50vh - 20vmin);
-/* 
-    box-shadow: inset 0 0 0 1px black;
-    border-radius: 50%;
-    background-color: #f09; */
 }
 
 body + img { 
@@ -49,6 +38,8 @@ nav {
     display: flex;
     padding:var(--navPadding);
     gap: var(--navGap);
+    align-items: center;
+    width: 95%;
 }
 
 /* Achtergrond */ 
@@ -58,74 +49,45 @@ main > input {
 }
 
 
+:nth-of-type(1) { --index:  1; }
+:nth-of-type(2) { --index:  2; }
+:nth-of-type(3) { --index:  3; }
+:nth-of-type(4) { --index:  4; }
+:nth-of-type(5) { --index:  5; }
+:nth-of-type(6) { --index:  6; }
+:nth-of-type(7) { --index:  7; }
+:nth-of-type(8) { --index:  8; }
+:nth-of-type(9) { --index:  9; }
 
-
-body:has(main > input:checked) main >  img:nth-of-type(1) {
-    bottom: -30rem;
-    transition: 1s 0.1s;
+main {
+    height:100%;
+    overflow:hidden;
 }
-body:has(main > input:checked) main >  img:nth-of-type(2) {
-    bottom: -30rem;
-    transition: 1s 0.2s;
-}
-
-body:has(main > input:checked) main > img:nth-of-type(3) {
-    bottom: -30rem;
-    transition: 1s 0.3s;
-}
-
-body:has(main > input:checked) main >  img:nth-of-type(4) {
-    top: -10rem;
-    transition: 1s 0.5s;
-}
-
-body:has(main > input:checked) main >  img:nth-of-type(5) {
-    top: -10rem;
-    transition: 1s 0.6s;
-}
-
-body:has(main > input:checked) main >  img:nth-of-type(6) {
-    top: -10rem;
-    transition: 1s 0.7s;
-}
-
-body:has(main > input:checked) main >  img:nth-of-type(7) {
-    top: -10rem;
-    transition: 1s 0.8s;
-}
-
-body:has(main > input:checked) main >  img:nth-of-type(8) {
-    top: -10rem;
-    transition: 1s;
-    transition: 1s 0.9s;
-}
-
-
-body:has(main > input:checked) main >  img:nth-of-type(9) {
-    filter: contrast(10);
-    filter: grayscale(1);
-    left: 25%;
-    width: 50%;
-    top: 3%;
-    transition: 1s 3s all;
-} 
-
-body:has(main > input[name="dayAndNight"]:checked) main nav ul li label:first-of-type {
-    pointer-events: none;
-}
-
-body:has(main > input[name="dayAndNight"]:checked) main nav ul {
-filter: brightness(20%);
-transition: 1s 2.5s all;
-}
-
 
 main > img {
     pointer-events: none;
+    user-select: none;
 }
 
+nav section {
+    display: none;
+}
 
-
+h1 {
+    text-align: center;
+    font-family: cloudy;
+    color: rgb(207, 237, 255);
+    font-size: 6rem;
+    margin-top: 12rem;
+    opacity: 1;
+    pointer-events: none;
+    user-select: none;
+    position: relative;
+    z-index: 99;
+    text-shadow: white 0 0 0 10;
+    transition-delay: 1s;
+    transition: 0.5s;
+}
 
 main >  img:nth-of-type(1) {
     position: absolute;
@@ -157,8 +119,8 @@ main >  img:nth-of-type(3) {
 
 main >  img:nth-of-type(4) {
     position: absolute;
-    top: 20%;
-    left: 90%;
+    top: 10%;
+    left: 50%;
     width: 300px;
     z-index: 1;
     animation: movingClouds 25s infinite alternate-reverse; 
@@ -213,11 +175,16 @@ main >  img:nth-of-type(8) {
 main >  img:nth-of-type(9) {
     position: absolute;
     top: 10%;
-    left: 60%;
-    width: 20%;
+    left: 80%;
+    width: 10%;
     transition: 0.5s all;
     z-index: -1;
     transition: 1s;
+}
+
+ul {
+    position: relative;
+    z-index: 999;
 }
 
 
@@ -242,8 +209,8 @@ ul:first-of-type {
 
     /* background-color: red; */
     background-image: 
-        url("./birdhouse-hover.svg"),
-        url("./birdhouse.svg");
+        url("./imgs/birdhouse-hover.svg"),
+        url("./imgs/birdhouse.svg");
     background-repeat: no-repeat;
     background-position:center;
     background-size: 0 0, contain;
@@ -277,8 +244,8 @@ ul:nth-of-type(2) {
 
     /* background-color: red; */
     background-image: 
-        url("./birdhouse-house_2.svg"),
-        url("./birdhouse-2.svg");
+        url("./imgs/birdhouse-house_2.svg"),
+        url("./imgs/birdhouse-2.svg");
     background-repeat: no-repeat;
     background-position:center;
     background-size: 0 0, contain;
@@ -312,8 +279,8 @@ ul:nth-of-type(3) {
 
     /* background-color: red; */
     background-image: 
-        url("./birdhouse-house_3.svg"),
-        url("./birdhouse-3.svg");
+        url("./imgs/birdhouse-house_3.svg"),
+        url("./imgs/birdhouse-3.svg");
     background-repeat: no-repeat;
     background-position:center;
     background-size: 0 0, contain;
@@ -392,7 +359,7 @@ li label:nth-of-type(1):has(:checked) {
 
 /* vogel label */
 ul:first-of-type  label:nth-of-type(2) {
-    background-image: url("./birdie.png");
+    background-image: url("./imgs/birdie.png");
     background-size: contain;
     background-position: center;
     /* background-color: #f096; */
@@ -404,7 +371,7 @@ ul:first-of-type  label:nth-of-type(2) {
 
 /* Tweede vogel */
 ul:nth-of-type(2) label:nth-of-type(2) {
-    background-image: url("./birdie2.png");
+    background-image: url("./imgs/birdie2.png");
     background-size: contain;
     background-position: center;
     /* background-color: #f096; */
@@ -415,7 +382,7 @@ ul:nth-of-type(2) label:nth-of-type(2) {
 
 /* Derde vogel */
 ul:nth-of-type(3) label:nth-of-type(2) {
-    background-image: url("./birdie3.png");
+    background-image: url("./imgs/birdie3.png");
     background-size: contain;
     background-position: center;
     /* background-color: #f096; */
@@ -435,6 +402,9 @@ ul:first-of-type label:nth-of-type(1):has(:checked) + label:nth-of-type(2) {
         vliegNaarCirkel 1.5s ease-in forwards,
         rondjesVliegen 10s 1.5s linear infinite,
         dead 2s paused;
+    
+    user-select: none;
+
 }
 
 
@@ -442,9 +412,11 @@ ul:first-of-type li label:nth-of-type(1):has(:checked) +  label:nth-of-type(2):h
     animation-play-state: paused, paused, running;
     animation-fill-mode: forwards;
     animation-iteration-count: 1;
-    filter:     
-    grayscale(1)
-    hue-rotate(150deg);
+    filter: grayscale(1);
+    filter: sepia(1);
+    filter: hue-rotate(310deg);
+    user-select: none;
+
 }
 
 /* Tweede vogel */ 
@@ -455,6 +427,8 @@ ul:nth-of-type(2) label:nth-of-type(1):has(:checked) + label:nth-of-type(2) {
         vliegNaarCirkel 1.5s ease-in forwards,
         rondjesVliegen 7s 1.5s linear infinite,
         dead 2s paused;
+    user-select: none;
+
 }
 
 
@@ -462,9 +436,11 @@ ul:nth-of-type(2) li label:nth-of-type(1):has(:checked) +  label:nth-of-type(2):
     animation-play-state: paused, paused, running;
     animation-fill-mode: forwards;
     animation-iteration-count: 1;
-    filter: 
-    grayscale(1), 
-    hue-rotate(150deg);
+    filter: grayscale(1);
+    filter: sepia(1);
+    filter: hue-rotate(310deg);
+    user-select: none;
+
 }
 
 /* Derde vogel */ 
@@ -476,6 +452,8 @@ ul:nth-of-type(3) label:nth-of-type(1):has(:checked) + label:nth-of-type(2) {
         vliegNaarCirkel 1.5s ease-in forwards,
         rondjesVliegen 5s 1.5s linear infinite,
         dead 2s paused;
+    user-select: none;
+
 }
 
 
@@ -484,8 +462,68 @@ ul:nth-of-type(3) li label:nth-of-type(1):has(:checked) +  label:nth-of-type(2):
     animation-fill-mode: forwards;
     animation-iteration-count: 1;
     filter: grayscale(1);
+    filter: sepia(1);
+    filter: hue-rotate(310deg);
+    user-select: none;
+
 }
 
+main nav div p {
+    position: absolute;
+    z-index: 100;
+    font-size: 1.6rem;
+    pointer-events: none;
+    margin: 0.25rem 0.43rem;
+}
+
+main nav div {
+    position: relative;
+    z-index: 99;
+    top: 0;
+    margin-left: auto;    
+    margin-bottom: 2rem;
+}
+
+input[name="dayAndNight"] {
+    appearance: none;
+    aspect-ratio: 1;
+    width: 2.5rem;
+    background-color: rgb(80, 179, 255);
+    margin: 0;
+    position: absolute;
+    top: 0;
+    border-radius: 10rem;
+    border: solid 0.1rem black;
+    transition: 0.5s;
+    background-image: url("./imgs/sun.png");
+    background-size: contain;
+    background-repeat: none;
+    background-position: center;
+
+}
+
+input[name="dayAndNight"]:checked {
+    appearance: none;
+    aspect-ratio: 1;
+    width: 2.5rem;
+    background-color: rgb(30, 30, 68);
+    margin: 0;
+    position: absolute;
+    top: 0;
+    border-radius: 10rem;
+    border: solid 0.1rem black;
+    transition: 0.5s;
+    background-image: url("./imgs/moon.png");
+    background-size: contain;
+    background-repeat: none;
+    background-position: center;
+
+}
+
+html:has([name="dayAndNight"]:checked) main > div p {
+    content: "";
+
+}  
 
 
 @keyframes movingClouds { 
@@ -493,7 +531,7 @@ ul:nth-of-type(3) li label:nth-of-type(1):has(:checked) +  label:nth-of-type(2):
         translate: 0 0;
     }
     to {
-        translate: -20rem 0;
+        translate: -5rem 0;
     }
 }
 
@@ -581,8 +619,38 @@ ul:nth-of-type(3) li label:nth-of-type(1):has(:checked) +  label:nth-of-type(2):
     }
 }
 
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
 
 @media screen and (max-width: 768px) {
+
+    ul {
+        z-index: 999;
+    }
+    
+    ul label:nth-of-type(1):has(:checked) + label:nth-of-type(2) {
+        width: 2.5rem;
+    }
+
+    main > img:nth-of-type(4),
+    main > img:nth-of-type(5),
+    main > img:nth-of-type(6),
+    main > img:nth-of-type(7),
+    main > img:nth-of-type(8){
+        width: 30%;
+    }
+
+    main > img:nth-of-type(9){
+        translate: 0 15rem;
+    }
+    
     @keyframes vliegNaarCirkel {
         100% {
             transform: translate(
@@ -591,32 +659,244 @@ ul:nth-of-type(3) li label:nth-of-type(1):has(:checked) +  label:nth-of-type(2):
             );
         }
     }
+
+    h1 {
+        text-align: center;
+        font-family: cloudy;
+        color: rgb(207, 237, 255);
+        font-size: 2rem;
+        margin-top: 12rem;
+        opacity: 0.5;
+        pointer-events: none;
+        user-select: none;
+        transition: 0.5s
+    
+    }
+
+    @keyframes movingClouds { 
+        from {
+            translate: 0 0;
+        }
+        to {
+            translate: 0rem 0;
+        }
+    }
+
+
+    html:has( [ name="dayAndNight"]:checked) main > img:nth-of-type(9) {
+        filter: contrast(10);
+        filter: grayscale(1);
+        left: 15%;
+        width: 70%;
+        top: 3%;
+        transition: 1s 3s all;    
+    }
+    
 }
 
 
+html:has( [ name="dayAndNight"]:checked ) {
+    --dayAndNight:night;
+}
 
+@container style(--dayAndNight:night) {
+    body {
+        background-color: rgb(0, 0, 66);
+        transition: 1s 2s all;    
+    }
 
+    body::after{
+		content:"";
+		position:fixed;
+		left:50%;
+		top:50%;
+		width:2px;
+		aspect-ratio:1;
+		background-color:#fff;
+		border-radius:50%;
+		box-shadow:
+			-41vw -25vh 0 0 #ffff,
+			-30vw -48vh 0 0 #ffff,
+			-22vw  44vh 0 0 #ffff,
+			-19vw  37vh 0 0 #ffff,
+			 53vw -13vh 0 0 #ffff,
+			 48vw -36vh 0 0 #ffff,
+			 34vw  12vh 0 0 #ffff,
+			 27vw -25vh 0 0 #ffff,
+			 15vw -41vh 0 0 #ffff,
+			-46vw  44vh 0 0 #ffff,
+			-36vw -20vh 0 0 #ffff,
+			-25vw  23vh 0 0 #ffff,
+			-17vw -39vh 0 0 #ffff,
+			 44vw -32vh 0 0 #ffff,
+			 38vw -18vh 0 0 #ffff,
+			 23vw  11vh 0 0 #ffff,
+			 19vw -37vh 0 0 #ffff,
+			-42vw  40vh 0 0 #ffff,
+			-30vw -26vh 0 0 #ffff,
+			-21vw  19vh 0 0 #ffff,
+			-11vw  25vh 0 0 #ffff,
+			 40vw  38vh 0 0 #ffff,
+			 32vw  44vh 0 0 #ffff,
+			 29vw -27vh 0 0 #ffff,
+			 13vw -33vh 0 0 #ffff,
+			-48vw -46vh 0 0 #ffff,
+			-34vw -12vh 0 0 #ffff,
+			-27vw  45vh 0 0 #ffff,
+			-15vw -11vh 0 0 #ffff,
+			 46vw -34vh 0 0 #ffff,
+			 36vw  23vh 0 0 #ffff,
+			 25vw  49vh 0 0 #ffff,
+			 17vw -12vh 0 0 #ffff,
+			-44vw  28vh 0 0 #ffff,
+			-28vw -21vh 0 0 #ffff,
+			-23vw  37vh 0 0 #ffff,
+			-19vw -30vh 0 0 #ffff,
+			 42vw -16vh 0 0 #ffff,
+			 30vw  49vh 0 0 #ffff,
+			 21vw -25vh 0 0 #ffff,
+			 10vw  18vh 0 0 #ffff;
+	
+		filter:
+			drop-shadow(19vw 23vh 0 #fff9)
+			drop-shadow(-23vw -37vh 0 #fff9)
+			drop-shadow(13vw 53vh 0 #fff9)
+			drop-shadow(-59vw -11vh 0 #fff9)
+			drop-shadow(67vw 17vh 0 #fff9);
 
+        transition-delay: 2s all; 
 
-/* li input:nth-of-type(1):checked~input:nth-of-type(2):checked {
-    display: block;
-    animation: dead 2s ease-in-out;
-    animation-fill-mode: forwards;
-    transition: 1s;
-    filter: grayscale(0);
-} */
+        
+	}
+	
 
-/* ul:nth-of-type(2) li input:nth-of-type(2) {
-    width: 4rem;
-    height: 4rem;
-    background-image: url(./birdie.png);
-    background-size: cover;
+    main > img:nth-of-type(1) {
+        bottom: -30rem;
+        transition: 1s calc(var(--index) * 0.1s);
+    
+    }
+    main > img:nth-of-type(2) {
+        bottom: -30rem;
+        transition: 1s calc(var(--index) * 0.1s);
+    }
 
-    animation: flyingHouse2 1s linear, spinning 10s -5s linear infinite, dead 2s linear paused;
-    animation-iteration-count: 1, infinite, 1;
-    animation-fill-mode: both;
+    main > img:nth-of-type(3) {
+        bottom: -30rem;
+        transition: 1s calc(var(--index) * 0.1s);
+    }
+    main > img:nth-of-type(4) {
+        top: -10rem;
+        transition: 1s calc(var(--index) * 0.1s);
+    }
+    main > img:nth-of-type(5) {
+        top: -10rem;
+        transition: 1s calc(var(--index) * 0.1s);
+    }
+    main > img:nth-of-type(6) {
+        top: -10rem;
+        transition: 1s calc(var(--index) * 0.1s);
+    }
 
-    offset-path: circle(10% at center);
-} */
+    main > img:nth-of-type(7) {
+        top: -10rem;
+        transition: 1s calc(var(--index) * 0.1s);
+    }
+
+    main > img:nth-of-type(8) {
+        top: -10rem;
+        transition: 1s calc(var(--index) * 0.1s);
+    }
+
+    main > img:nth-of-type(9) {
+        filter: contrast(10);
+        filter: grayscale(1);
+        left: 25%;
+        width: 50%;
+        top: 3%;
+        transition: 1s 3s all;    
+    }
+    ul:nth-of-type(1):hover ~ section {
+        display: block;
+        position: absolute;
+        z-index: 999;
+    }
+
+    ul:nth-of-type(2):hover ~ section:nth-of-type(2) {
+        display: block;
+        position: absolute;
+        z-index: 999;
+        translate: 7rem 0;
+    }
+
+    ul:nth-of-type(3):hover ~ section:nth-of-type(3) {
+        display: block;
+        position: absolute;
+        z-index: 999;
+        translate: 14rem 0;
+    }
+
+    nav section p {
+        pointer-events: none; 
+        user-select: none;
+    }
+
+    
+    nav section p {
+        margin: 0;
+        translate: 3rem 0;
+        font-weight: 900;
+        color: white;
+        font-family: cloudy;
+    }
+    
+    nav section p:nth-of-type(1) {
+        margin: 0 0 0 1rem;
+        translate: 3rem 0;
+        font-weight: 900;
+        color: white;
+        font-size: 1.5rem;
+        animation: fadeIn 1s 1s linear alternate-reverse infinite;
+        opacity: 0;
+
+    }
+    
+    nav section p:nth-of-type(2) {
+        margin: 0 0 0 0.5rem;
+        translate: 3rem 0;
+        font-weight: 900;
+        color: white;
+        animation: fadeIn 1s 0.5s linear alternate-reverse infinite;
+        opacity: 0;
+
+    }
+    
+   nav section p:nth-of-type(3) {
+        margin: 0;
+        translate: 3rem 0;
+        font-weight: 900;
+        color: white;
+        animation: fadeIn 1s 0.25s linear alternate-reverse infinite;
+        opacity: 0;
+    }
+
+    main nav ul li label:first-of-type {
+        pointer-events: none;
+    }
+
+    h1 {
+        font-size: 5rem;
+        transform-origin: center; 
+        opacity: 0;
+        pointer-events: none; 
+        transition: 0.5s
+    }
+
+    main nav ul {
+        filter: brightness(20%);
+        transition: 1s 2.5s all;
+     }
+        
+
+}
 
 
