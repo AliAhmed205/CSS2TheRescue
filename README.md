@@ -296,7 +296,7 @@ input:checked+img{
 <p><img width="994" alt="Scherm­afbeelding 2024-03-14 om 07 17 22" src="https://github.com/AliAhmed205/CSS2TheRescue/assets/118130116/7ec44e67-456a-4f8a-b0df-e16418b0b04e">
 </p>
 <hr>
-<img width="300" src="https://github.com/AliAhmed205/CSS2TheRescue/assets/118130116/fdec8cbc-1413-4f90-a724-0059b9570d73">
+<img width="400" src="https://github.com/AliAhmed205/CSS2TheRescue/assets/118130116/fdec8cbc-1413-4f90-a724-0059b9570d73">
 
 ### 03/03/2024
 
@@ -304,6 +304,18 @@ input:checked+img{
 
 ### Background
 <p>I decided to jazz up the style by adding a background. That's when I thought about clouds. I thought, why not animate clouds and a sun? And when you switch on the day-night mode, instead of just a quick change, imagine everything shifting slowly, almost like a theatrical performance. It's all about timing, making sure each element transitions smoothly.</p>
+
+<img width="500" src="https://github.com/AliAhmed205/CSS2TheRescue/assets/118130116/92cceefd-a7d4-4e41-82cc-17bb289160e0">
+
+```CSS
+body {
+    background-image: url(./imgs/background.svg);
+    background-size: cover;
+}
+```
+
+<p>I would first add a regular empty background.</p>
+
 
 
 
