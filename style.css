@@ -2,52 +2,16 @@
     font-family: cloudy;
     src: url("./Cloudy-0W244.ttf");
 }
-:root {
-    /* cirkel-radius */
-    
-
-    /* HuisAfstand */ 
-   
-}
 
 *, *::before, *::after {
     box-sizing: border-box;
 }
 
-html {
-    height:100dvh;
-    overflow: hidden;
-}
 
-body {
-    margin:0;
-    height:100%;
-    overflow: hidden;
-    background-color: rgb(97, 163, 255);
-    transition: 1s all;
-}
 
-body + img { 
-    position: absolute;
-}
-
-nav {
-    --navGap: 2em;
-    --navPadding:1em;
-
-    display: flex;
-    padding:var(--navPadding);
-    gap: var(--navGap);
-    align-items: center;
-    width: 95%;
-}
-
-/* Achtergrond */ 
-
-main > input {
-    position: absolute;
-}
-
+/***********/
+/* overall */
+/***********/
 
 :nth-of-type(1) { --index:  1; }
 :nth-of-type(2) { --index:  2; }
@@ -58,143 +22,302 @@ main > input {
 :nth-of-type(7) { --index:  7; }
 :nth-of-type(8) { --index:  8; }
 :nth-of-type(9) { --index:  9; }
+:nth-of-type(10) { --index:  10; }
+:nth-of-type(11) { --index:  11; }
+:nth-of-type(12) { --index:  12; }
+:nth-of-type(13) { --index:  13; }
+:nth-of-type(14) { --index:  14; }
+:nth-of-type(15) { --index:  15; }
+:nth-of-type(16) { --index:  16; }
+:nth-of-type(17) { --index:  17; }
+:nth-of-type(18) { --index:  18; }
+:nth-of-type(19) { --index:  19; }
+:nth-of-type(20) { --index:  20; }
+:nth-of-type(21) { --index:  21; }
+:nth-of-type(22) { --index:  22; }
+:nth-of-type(23) { --index:  23; }
+:nth-of-type(24) { --index:  24; }
+:nth-of-type(25) { --index:  25; }
+
+
+
+/************************/
+/*  html, body and main */
+/************************/
+
+html {
+    height:100dvh;
+    overflow: hidden;
+}
+
+body {
+    height:100%;
+    margin:0;
+    overflow: hidden;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    background-color: rgb(97, 163, 255);
+    transition:1s;
+}
 
 main {
     height:100%;
-    overflow:hidden;
+    overflow: hidden;
+
+    display:flex;
+    flex-direction:column;
 }
 
-main > img {
+/* sterren */
+body:after {
+    content:"";
+    position:fixed;
+    left:50%;
+    top:50%;
+    z-index: 0;
+
+    width:2px;
+    aspect-ratio:1;
+
+    background-color:#fff;
+	border-radius:50%;
+
+    opacity:0;
+    scale:0;
+
+    transition-duration: 1s;
+}
+
+
+
+/*********/
+/* TITEL */
+/*********/
+
+h1 {
+    position: relative;
+    z-index:30;
+
+    margin-top: 12rem;
+    
+    font-size: 2rem;
+    font-family: cloudy;
+    text-align: center;
+    text-shadow: white 0 0 0 10;
+    color: rgb(207, 237, 255);
+    
+    opacity: 0.5;
+
+    transition-duration: 0.5s;
+    transition-delay: 1s;
+    
     pointer-events: none;
     user-select: none;
+
+    @media (width > 48em) {
+        font-size: 6rem;
+        opacity: 1;
+    }
 }
 
+
+
+/*****************/
+/* WOLKEN EN ZON */
+/*****************/
+
+/* met CSS nesting */
+
+/* alle wolken en de zon/maan */
+main > img {
+    position: absolute;
+    z-index:20;
+    pointer-events: none;
+    user-select: none;
+
+    /* hoekwolken 1 tot 3 */
+    &:nth-of-type(-n + 3) {
+        bottom: 0;
+        opacity: 0.5;
+        transition: 0.5s;
+    }
+
+    &:nth-of-type(1) {
+        width: 70%;
+    }
+
+    &:nth-of-type(2) {
+        width: 100%;
+        right: 0;
+    }
+
+    &:nth-of-type(3) {
+        width: 100%;
+        left: 0;
+    }
+
+    /* bewegende wolken 4 tot 8 */
+    &:nth-of-type(n + 4):nth-of-type(-n + 8) {
+        width: 30%;
+        transition: 1s;
+    }
+
+    &:nth-of-type(4) {
+        top: 10%;
+        left: 50%;
+    }
+    
+    &:nth-of-type(5) {
+        top: 50%;
+        left: 50%;
+    }
+
+    &:nth-of-type(6) {
+        top: 30%;
+        left: 15%;
+    }
+
+    &:nth-of-type(7) {
+        top: 20%;
+        right: 20%;
+    }
+
+    &:nth-of-type(8) {
+        top: 20%;
+        right: 90%;
+    }
+
+    @media (width > 48em) {
+
+        @keyframes movingClouds { 
+            from {
+                translate: 0 0;
+            }
+            to {
+                translate: -5rem 0;
+            }
+        }
+    
+        &:nth-of-type(n + 4):nth-of-type(-n + 8) {
+            animation: movingClouds var(--dur) infinite alternate-reverse ease-in-out; 
+        }
+    
+        &:nth-of-type(4) {
+            width: 300px;
+            --dur:25s;
+        }
+    
+        &:nth-of-type(5) {
+            width: 300px;
+            --dur:30s;
+        }
+    
+        &:nth-of-type(6) {
+            width: 300px;
+            --dur:70s;
+        }
+    
+        &:nth-of-type(7) {
+            width: 200px;
+            --dur:50s;
+        }
+    
+        &:nth-of-type(8) {
+            width: 200px;
+            --dur:30s;
+        }
+    
+    }
+
+    /* zon/maan 9 */
+    &:nth-of-type(9){
+        top: 10%;
+        left: 80%;
+        z-index:10;
+    
+        width: 10%;
+    
+        transition: 1s;
+    }
+}
+
+
+
+/*******/
+/* NAV */
+/*******/
+nav {
+    --navGap: 2em;
+    --navPadding: 0.5em;
+
+    z-index:40;
+
+    /* in de HTML onder de titel */
+    /* visueel boven de titel */
+    order: -1;
+
+    display: flex;
+    padding:var(--navPadding);
+    gap: var(--navGap);
+    align-items: center;
+}
+
+
+
+/* day/night switch */
+main nav div {
+    position: relative;
+    margin-left: auto;
+}
+
+input[name="dayAndNight"] {
+    width: 2.5rem;
+    aspect-ratio: 1;
+    margin: 0;
+
+    appearance: none;
+    
+    border-radius: 10rem;
+    border: solid 0.1rem black;
+    
+    background-color: rgb(80, 179, 255);
+    background-image: url("./imgs/sun.png");
+    background-size: contain;
+
+    transition: 0.5s;
+}
+
+
+
+/*******************/
+/* HUISJES WRAPPER */
+/*******************/
+
 nav section {
+    position: relative;
+}
+
+
+
+/*******/
+/* ZZZ */
+/*******/
+
+nav section p {
     display: none;
 }
 
-h1 {
-    text-align: center;
-    font-family: cloudy;
-    color: rgb(207, 237, 255);
-    font-size: 6rem;
-    margin-top: 12rem;
-    opacity: 1;
-    pointer-events: none;
-    user-select: none;
-    position: relative;
-    z-index: 99;
-    text-shadow: white 0 0 0 10;
-    transition-delay: 1s;
-    transition: 0.5s;
-}
 
-main >  img:nth-of-type(1) {
-    position: absolute;
-    bottom: 0;
-    opacity: 0.5;
-    width: 70%;
-    transition: 0.5s;
-}
 
-main >  img:nth-of-type(2) {
-    position: absolute;
-    bottom: 0;
-    opacity: 0.5;
-    width: 100%;
-    right: 0;
-    transition: 0.5s;
+/***********/
+/* HUISJES */
+/***********/
 
-}
-
-main >  img:nth-of-type(3) {
-    position: absolute;
-    bottom: 0;
-    opacity: 0.5;
-    width: 100%;
-    left: 0;
-    transition: 0.5s;
-
-}
-
-main >  img:nth-of-type(4) {
-    position: absolute;
-    top: 10%;
-    left: 50%;
-    width: 300px;
-    z-index: 1;
-    animation: movingClouds 25s infinite alternate-reverse; 
-    transition: 1s;
-}
-
-main >  img:nth-of-type(5) {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    right: 0;
-    width: 300px;
-    z-index: 1;
-    animation: movingClouds 30s infinite  alternate-reverse;
-    transition: 1s;
-
-}
-
-main >  img:nth-of-type(6) {
-    position: absolute;
-    top: 30%;
-    left: 15%;
-    right: 0;
-    width: 300px;
-    z-index: 1;
-    animation: movingClouds 70s infinite  alternate-reverse;
-    transition: 1s;
-
-}
-
-main >  img:nth-of-type(7) {
-    position: absolute;
-    top: 20%;
-    right: 20%;
-    width: 200px;
-    z-index: 1;
-    animation: movingClouds 50s infinite  alternate-reverse;
-    transition: 1s;
-
-}
-main >  img:nth-of-type(8) {
-    position: absolute;
-    top: 20%;
-    right: 90%;
-    width: 200px;
-    z-index: 1;
-    animation: movingClouds 30s infinite  alternate-reverse;
-    transition: 1s;
-
-}
-
-main >  img:nth-of-type(9) {
-    position: absolute;
-    top: 10%;
-    left: 80%;
-    width: 10%;
-    transition: 0.5s all;
-    z-index: -1;
-    transition: 1s;
-}
-
+/* alle huisjes */
 ul {
-    position: relative;
-    z-index: 999;
-}
-
-
-
-/* het huisje */
-ul:first-of-type {
-    --houseSize: 5em;
-    --birdSize:calc( var(--houseSize) - var(--housePadding) * 2);
+    --houseSize: 3em;
+    --birdSize:calc( var(--houseSize) - var(--housePadding) * .5);
     --houseTop: calc( var(--navPadding) + var(--houseSize) * .5 );
-    --housePadding: 1em; 
+    --housePadding: .45em; 
 
     --houseLeft: calc( 
             var(--navPadding) 
@@ -204,120 +327,83 @@ ul:first-of-type {
             (var(--i) - 1) * var(--navGap) 
         ); 
 
-
     position: relative;
 
-    /* background-color: red; */
+    width: var(--houseSize);
+    aspect-ratio: 1;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+    display: grid;
+
+    background-repeat: no-repeat;
+    background-position:center;
+    /* background-size: 0 0, contain; */
+}
+
+/* huisje 1 */
+section:nth-of-type(1) ul {
+    --i:1;
+    --radius: 20vmin;
+    --vliegen:10s;
+
     background-image: 
         url("./imgs/birdhouse-hover.svg"),
         url("./imgs/birdhouse.svg");
-    background-repeat: no-repeat;
-    background-position:center;
-    background-size: 0 0, contain;
-
-    margin: 0;
-    padding: 0;
-    list-style: none;
-    
-    width: var(--houseSize);
-    aspect-ratio: 1;
-
-    display: grid;
 }
 
-ul:nth-of-type(2) {
-    --houseSize: 5em;
-    --birdSize:calc( var(--houseSize) - var(--housePadding) * 2);
-    --houseTop: calc( var(--navPadding) + var(--houseSize) * .5 );
-    --housePadding: 1em; 
+/* huisje 2 */
+section:nth-of-type(2) ul {
+    --i:2;
+    --radius: 27vmin;
+    --vliegen:7s;
 
-    --houseLeft: calc( 
-            var(--navPadding) 
-            + 
-            (var(--i) - .5) * var(--houseSize) 
-            + 
-            (var(--i) - 1) * var(--navGap) 
-        ); 
-
-
-    position: relative;
-
-    /* background-color: red; */
     background-image: 
         url("./imgs/birdhouse-house_2.svg"),
         url("./imgs/birdhouse-2.svg");
-    background-repeat: no-repeat;
-    background-position:center;
-    background-size: 0 0, contain;
-
-    margin: 0;
-    padding: 0;
-    list-style: none;
-    
-    width: var(--houseSize);
-    aspect-ratio: 1;
-
-    display: grid;
 }
 
-ul:nth-of-type(3) {
-    --houseSize: 5em;
-    --birdSize:calc( var(--houseSize) - var(--housePadding) * 2);
-    --houseTop: calc( var(--navPadding) + var(--houseSize) * .5 );
-    --housePadding: 1em; 
+/* huisje 3 */
+section:nth-of-type(3) ul {
+    --i:3;
+    --radius: 35vmin;
+    --vliegen:5s;
 
-    --houseLeft: calc( 
-            var(--navPadding) 
-            + 
-            (var(--i) - .5) * var(--houseSize) 
-            + 
-            (var(--i) - 1) * var(--navGap) 
-        ); 
-
-
-    position: relative;
-
-    /* background-color: red; */
     background-image: 
         url("./imgs/birdhouse-house_3.svg"),
         url("./imgs/birdhouse-3.svg");
-    background-repeat: no-repeat;
-    background-position:center;
-    background-size: 0 0, contain;
+        transition: 0.5s;
+}
 
-    margin: 0;
-    padding: 0;
-    list-style: none;
-    
-    width: var(--houseSize);
-    aspect-ratio: 1;
-
-    display: grid;
+h4 {
+    display: none;
 }
 
 
-ul:nth-of-type(1) {
-    --i:1;
-    --radius: 20vmin;
-}
-
-ul:nth-of-type(2) {
-    --i:2;
-    --radius: 27vmin;
-}
-
-ul:nth-of-type(3) {
-    --i:3;
+section:nth-of-type(4) ul {
+    --i:4;
     --radius: 35vmin;
+    --vliegen:5s;
+    background-image: 
+        url("./imgs/birdhouse-house_4.svg"),
+        url("./imgs/birdhouse-4.svg");
 }
 
-ul:hover {
+ul:has( label:nth-of-type(1):hover ),
+ul:has( label:nth-of-type(1):focus-within ) {
     background-size: contain;
 }
 
 
+
+/*********/
+/* VOGEL */
+/*********/
+
 /* vogel wrapper */
 li {
+    z-index: 50;
     grid-area: 1/1;
     padding: var(--housePadding);
     pointer-events: none;
@@ -327,212 +413,136 @@ li {
 
 
 /* labels and checkboxes */
-li label, 
 li input {
     appearance: none;
+    position: absolute;
+    left: -9999em;
 }
 
 li label {
     grid-area: 1/1;
     width: var(--birdSize);
     aspect-ratio: 1;
-    pointer-events: all;
-    cursor: pointer;
-}
-
-li input {
-    position: absolute;
-    left: -9999em;
+    pointer-events: all;   
 }
 
 
 /* trigger label  */
 li label:nth-of-type(1) {
     /* nada */
+    cursor: pointer;
 }
 
 li label:nth-of-type(1):has(:checked) {
     position: absolute;
     left:-9999em;
+    display:none;
 }
 
 
 /* vogel label */
-ul:first-of-type  label:nth-of-type(2) {
-    background-image: url("./imgs/birdie.png");
-    background-size: contain;
+ul label:nth-of-type(2) {
+    /* background-color:#f006; */
+    background-size: 2.5rem auto;
     background-position: center;
-    /* background-color: #f096; */
+    background-repeat:no-repeat;
 
     display:none;
-    cursor: url("https://cdn.custom-cursor.com/db/pointer/32/Gun_Sight.png"), pointer !important;
+    /* liever even opnemen in je eigen website - dan werkt het ook offline en zo */
+    /* 16 16 zodat midden van vizier het punt is waarmee geklikt wordt */
+    cursor: url("https://cdn.custom-cursor.com/db/pointer/32/Gun_Sight.png") 16 16, pointer;
+
+    pointer-events: none;
+    user-select: none;
+
+    @media (width > 48em) {
+        background-size: cover;
+    }
+}
+
+/* om door de vliegende vogels te tab-ben */
+ul label:nth-of-type(2):focus-within {
+    filter:
+        drop-shadow( .1em    0   0 #f09)
+        drop-shadow( .05em  .05em 0 #f09)
+        drop-shadow(  0     .1em 0 #f09)
+        drop-shadow(-.05em  .05em 0 #f09)
+        drop-shadow(-.1em    0   0 #f09)
+        drop-shadow(-.05em -.05em 0 #f09)
+        drop-shadow(  0    -.1em 0 #f09)
+        drop-shadow( .05em -.05em 0 #f09);
+}
+
+
+
+/* Eerste vogel */
+section:nth-of-type(1) ul label:nth-of-type(2) {
+    background-image: url("./imgs/birdie.png");
 }
 
 
 /* Tweede vogel */
-ul:nth-of-type(2) label:nth-of-type(2) {
+section:nth-of-type(2) ul label:nth-of-type(2) {
     background-image: url("./imgs/birdie2.png");
-    background-size: contain;
-    background-position: center;
-    /* background-color: #f096; */
-
-    display:none;
-    cursor: url("https://cdn.custom-cursor.com/db/pointer/32/Gun_Sight.png"), pointer !important;
 }
 
 /* Derde vogel */
-ul:nth-of-type(3) label:nth-of-type(2) {
+section:nth-of-type(3) ul label:nth-of-type(2) {
     background-image: url("./imgs/birdie3.png");
-    background-size: contain;
-    background-position: center;
-    /* background-color: #f096; */
-
-    display:none;
-    cursor: url("https://cdn.custom-cursor.com/db/pointer/32/Gun_Sight.png"), pointer !important;
+}
+/* Vierde vogel */
+section:nth-of-type(4) ul label:nth-of-type(2) {
+    background-image: url("./imgs/birdie4.png");
 }
 
 
 
 
-/* Eerste vogel */ 
-ul:first-of-type label:nth-of-type(1):has(:checked) + label:nth-of-type(2) {
+/* vliegen */
+/* eerst naar cirkel dan cirkels */ 
+ul label:nth-of-type(1):has(:checked) + label:nth-of-type(2) {
     display:block;
     position: relative;
     animation: 
-        vliegNaarCirkel 1.5s ease-in forwards,
-        rondjesVliegen 10s 1.5s linear infinite,
-        dead 2s paused;
-    
-    user-select: none;
-
+        vliegNaarCirkel 1.5s ease-in,
+        rondjesVliegen var(--vliegen) 1.5s linear infinite,
+        dead 2s paused forwards;
 }
 
-
-ul:first-of-type li label:nth-of-type(1):has(:checked) +  label:nth-of-type(2):has(:checked)  {
+/* dead */
+ul label:nth-of-type(1):has(:checked) + label:nth-of-type(2):has(:checked)  {
     animation-play-state: paused, paused, running;
-    animation-fill-mode: forwards;
-    animation-iteration-count: 1;
-    filter: grayscale(1);
-    filter: sepia(1);
-    filter: hue-rotate(310deg);
-    user-select: none;
 
+    /* DIT WAS HET PROBLEEM */
+    /* animation-iteration-count: 1; */
+
+    filter: grayscale(1) sepia(1) hue-rotate(330deg);
 }
 
-/* Tweede vogel */ 
-ul:nth-of-type(2) label:nth-of-type(1):has(:checked) + label:nth-of-type(2) {
+ul:nth-of-type(4) label:nth-of-type(1):has(:checked) + label:nth-of-type(2) {
     display:block;
     position: relative;
     animation: 
-        vliegNaarCirkel 1.5s ease-in forwards,
-        rondjesVliegen 7s 1.5s linear infinite,
-        dead 2s paused;
-    user-select: none;
-
+        vliegNaarCirkel 1.5s ease-in,
+        rondjesVliegen var(--vliegen) 1.5s linear infinite,
+        dead 2s paused forwards;
 }
 
-
-ul:nth-of-type(2) li label:nth-of-type(1):has(:checked) +  label:nth-of-type(2):has(:checked)  {
+html:has( section:nth-of-type(4) :checked )  section:nth-of-type(-n + 3) label:nth-of-type(1):has(:checked) + label:nth-of-type(2) {
     animation-play-state: paused, paused, running;
-    animation-fill-mode: forwards;
-    animation-iteration-count: 1;
-    filter: grayscale(1);
-    filter: sepia(1);
-    filter: hue-rotate(310deg);
-    user-select: none;
-
 }
 
-/* Derde vogel */ 
-
-ul:nth-of-type(3) label:nth-of-type(1):has(:checked) + label:nth-of-type(2) {
+html:not(:has( section:nth-of-type(4) :checked ))  section:nth-of-type(-n + 3) label:nth-of-type(1):has(:checked) + label:nth-of-type(2) {
     display:block;
     position: relative;
     animation: 
-        vliegNaarCirkel 1.5s ease-in forwards,
-        rondjesVliegen 5s 1.5s linear infinite,
-        dead 2s paused;
-    user-select: none;
-
+        vliegNaarCirkel 1.5s ease-in,
+        rondjesVliegen var(--vliegen) 1.5s linear infinite,
+        dead 2s paused forwards;
 }
 
-
-ul:nth-of-type(3) li label:nth-of-type(1):has(:checked) +  label:nth-of-type(2):has(:checked)  {
-    animation-play-state: paused, paused, running;
-    animation-fill-mode: forwards;
-    animation-iteration-count: 1;
-    filter: grayscale(1);
-    filter: sepia(1);
-    filter: hue-rotate(310deg);
-    user-select: none;
-
-}
-
-main nav div p {
-    position: absolute;
-    z-index: 100;
-    font-size: 1.6rem;
-    pointer-events: none;
-    margin: 0.25rem 0.43rem;
-}
-
-main nav div {
+section:nth-of-type(4) {
     position: relative;
-    z-index: 99;
-    top: 0;
-    margin-left: auto;    
-    margin-bottom: 2rem;
-}
-
-input[name="dayAndNight"] {
-    appearance: none;
-    aspect-ratio: 1;
-    width: 2.5rem;
-    background-color: rgb(80, 179, 255);
-    margin: 0;
-    position: absolute;
-    top: 0;
-    border-radius: 10rem;
-    border: solid 0.1rem black;
-    transition: 0.5s;
-    background-image: url("./imgs/sun.png");
-    background-size: contain;
-    background-repeat: none;
-    background-position: center;
-
-}
-
-input[name="dayAndNight"]:checked {
-    appearance: none;
-    aspect-ratio: 1;
-    width: 2.5rem;
-    background-color: rgb(30, 30, 68);
-    margin: 0;
-    position: absolute;
-    top: 0;
-    border-radius: 10rem;
-    border: solid 0.1rem black;
-    transition: 0.5s;
-    background-image: url("./imgs/moon.png");
-    background-size: contain;
-    background-repeat: none;
-    background-position: center;
-
-}
-
-html:has([name="dayAndNight"]:checked) main > div p {
-    content: "";
-
-}  
-
-
-@keyframes movingClouds { 
-    from {
-        translate: 0 0;
-    }
-    to {
-        translate: -5rem 0;
-    }
 }
 
 
@@ -544,7 +554,6 @@ html:has([name="dayAndNight"]:checked) main > div p {
             calc(50vw - var(--houseLeft)),
             calc(50vh - var(--radius) - var(--houseTop))
         );
-        pointer-events: none;
     }
 }
 
@@ -555,165 +564,157 @@ html:has([name="dayAndNight"]:checked) main > div p {
             translateY( calc(50vh - var(--houseTop)) )
             rotate(0deg)
             translateY( calc(var(--radius) * -1) );
-            pointer-events: all;
-
+        pointer-events: all;
     } 
     100% {
         transform: 
-        translateX( calc(50vw - var(--houseLeft)) )
-        translateY( calc(50vh - var(--houseTop)) )
-        rotate(360deg)
-        translateY( calc(var(--radius) * -1) );
+            translateX( calc(50vw - var(--houseLeft)) )
+            translateY( calc(50vh - var(--houseTop)) )
+            rotate(360deg)
+            translateY( calc(var(--radius) * -1) );
         pointer-events: all;
     }
 }
 
-
-
-@keyframes spinning {
-
-    to {
-        offset-distance: 100%;
-    }
-}
-
-
-@keyframes flyingHouse1 {
-    0% {
-        translate: -70vh -22vw;
-    }
-
-    100% {
-        translate: 0 0rem;
-    }
-}
-
-
 @keyframes dead {
-    
     0%  {
         top: 0;
     }
-
     90% {
-        top: 30vh;
+        top: 5vh;
         opacity: 0;
     }
-    100%{
-        display: none;
-        top: 30vh;
-        opacity: 0;
-    }
-    
-}
-
-@keyframes flyingHouse2 {
-    0% {
-        translate: -60vh -22vw;
-
-    }
-
     100% {
-
-        translate: 0 0rem;
-    }
-}
-
-@keyframes fadeIn {
-    from {
+        display: none;
+        top: 5vh;
         opacity: 0;
     }
-    to {
-        opacity: 1;
-    }
 }
+/**********/
+/* MOBILE */
+/**********/
+
+@media (min-width: 500px) {
 
 
-@media screen and (max-width: 768px) {
+    nav {
+        --navGap: 2em;
+        --navPadding:1em;
+    }
 
     ul {
-        z-index: 999;
+        --houseSize: 5em;
+        --birdSize:calc( var(--houseSize) - var(--housePadding) * 2);
+        --houseTop: calc( var(--navPadding) + var(--houseSize) * .5 );
+        --housePadding: 1em; 
+    
+        --houseLeft: calc( 
+                var(--navPadding) 
+                + 
+                (var(--i) - .5) * var(--houseSize)
+                + 
+                (var(--i) - 1) * var(--navGap));
+        position: relative;
+
+        width: var(--houseSize);
+        aspect-ratio: 1;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+            
+        display: grid;
+            
+        background-repeat: no-repeat;
+        background-position:center;
+        background-size: 0 0, contain;
+    }
+
+    /* Vierde vogel */
+    section:nth-of-type(4) ul label:nth-of-type(2) {
+    background-image: url("./imgs/birdie4.png");
+    width: 5rem;
+    }     
+
+    section:nth-of-type(4) ul {
+        --i:4;
+        --radius: 35vmin;
+        --vliegen:5s;
+        width: 7.5rem;
+        background-image: 
+            url("./imgs/birdhouse-house_4.svg"),
+            url("./imgs/birdhouse-4.svg");
     }
     
-    ul label:nth-of-type(1):has(:checked) + label:nth-of-type(2) {
-        width: 2.5rem;
-    }
-
-    main > img:nth-of-type(4),
-    main > img:nth-of-type(5),
-    main > img:nth-of-type(6),
-    main > img:nth-of-type(7),
-    main > img:nth-of-type(8){
-        width: 30%;
-    }
-
-    main > img:nth-of-type(9){
-        translate: 0 15rem;
+    ul:has( label:nth-of-type(1):hover ),
+    ul:has( label:nth-of-type(1):focus-within ) {
+        background-size: contain;
     }
     
-    @keyframes vliegNaarCirkel {
-        100% {
-            transform: translate(
-                calc(50vw - var(--houseLeft)),
-                calc(50vh - var(--radius) - var(--houseTop)) /* Aanpassing van de verticale positie voor mobiele apparaten */
-            );
-        }
-    }
 
-    h1 {
-        text-align: center;
-        font-family: cloudy;
-        color: rgb(207, 237, 255);
-        font-size: 2rem;
-        margin-top: 12rem;
-        opacity: 0.5;
-        pointer-events: none;
-        user-select: none;
-        transition: 0.5s
-    
-    }
-
-    @keyframes movingClouds { 
-        from {
-            translate: 0 0;
-        }
-        to {
-            translate: 0rem 0;
-        }
-    }
-
-
-    html:has( [ name="dayAndNight"]:checked) main > img:nth-of-type(9) {
-        filter: contrast(10);
-        filter: grayscale(1);
-        left: 15%;
-        width: 70%;
-        top: 3%;
-        transition: 1s 3s all;    
+    section:nth-of-type(4) ul {
+        --i:4;
+        --radius: 35vmin;
+        --vliegen:5s;
+        width: 7.5rem;
+        background-image: 
+            url("./imgs/birdhouse-house_4.svg"),
+            url("./imgs/birdhouse-4.svg");
     }
     
+    ul:has( label:nth-of-type(1):hover ),
+    ul:has( label:nth-of-type(1):focus-within ) {
+        background-size: contain;
+    }
+
+    section:nth-of-type(4) h4 {
+        display: block;
+        position: absolute;
+        left: 8rem;
+        width: 150px;
+        opacity: 0;
+        transition: .5s;
+        font-size: .8rem;
+        background-color: red;
+        color: white;
+        padding: 1rem;
+        border-radius: 20px;
+        box-shadow: red 0 0 20px;
+        font-weight: 400;
+    }
+    
+    section:nth-of-type(4):hover h4 {
+        opacity: 1;
+        transition: .5s;
+    }
+    
+    
+
 }
 
+
+
+
+
+/*********/
+/* NIGHT */
+/*********/
 
 html:has( [ name="dayAndNight"]:checked ) {
     --dayAndNight:night;
 }
 
+
 @container style(--dayAndNight:night) {
     body {
         background-color: rgb(0, 0, 66);
-        transition: 1s 2s all;    
+        transition: 1s 2s;    
     }
 
+    /* sterren */
     body::after{
-		content:"";
-		position:fixed;
-		left:50%;
-		top:50%;
-		width:2px;
-		aspect-ratio:1;
-		background-color:#fff;
-		border-radius:50%;
+        opacity:1;
+        scale:1;
+
 		box-shadow:
 			-41vw -25vh 0 0 #ffff,
 			-30vw -48vh 0 0 #ffff,
@@ -764,125 +765,12 @@ html:has( [ name="dayAndNight"]:checked ) {
 			drop-shadow(-59vw -11vh 0 #fff9)
 			drop-shadow(67vw 17vh 0 #fff9);
 
-        transition-delay: 2s all; 
-
-        
+        transition-delay: 2s;
 	}
-	
 
-    main > img:nth-of-type(1) {
-        bottom: -30rem;
-        transition: 1s calc(var(--index) * 0.1s);
-    
-    }
-    main > img:nth-of-type(2) {
-        bottom: -30rem;
-        transition: 1s calc(var(--index) * 0.1s);
-    }
 
-    main > img:nth-of-type(3) {
-        bottom: -30rem;
-        transition: 1s calc(var(--index) * 0.1s);
-    }
-    main > img:nth-of-type(4) {
-        top: -10rem;
-        transition: 1s calc(var(--index) * 0.1s);
-    }
-    main > img:nth-of-type(5) {
-        top: -10rem;
-        transition: 1s calc(var(--index) * 0.1s);
-    }
-    main > img:nth-of-type(6) {
-        top: -10rem;
-        transition: 1s calc(var(--index) * 0.1s);
-    }
 
-    main > img:nth-of-type(7) {
-        top: -10rem;
-        transition: 1s calc(var(--index) * 0.1s);
-    }
-
-    main > img:nth-of-type(8) {
-        top: -10rem;
-        transition: 1s calc(var(--index) * 0.1s);
-    }
-
-    main > img:nth-of-type(9) {
-        filter: contrast(10);
-        filter: grayscale(1);
-        left: 25%;
-        width: 50%;
-        top: 3%;
-        transition: 1s 3s all;    
-    }
-    ul:nth-of-type(1):hover ~ section {
-        display: block;
-        position: absolute;
-        z-index: 999;
-    }
-
-    ul:nth-of-type(2):hover ~ section:nth-of-type(2) {
-        display: block;
-        position: absolute;
-        z-index: 999;
-        translate: 7rem 0;
-    }
-
-    ul:nth-of-type(3):hover ~ section:nth-of-type(3) {
-        display: block;
-        position: absolute;
-        z-index: 999;
-        translate: 14rem 0;
-    }
-
-    nav section p {
-        pointer-events: none; 
-        user-select: none;
-    }
-
-    
-    nav section p {
-        margin: 0;
-        translate: 3rem 0;
-        font-weight: 900;
-        color: white;
-        font-family: cloudy;
-    }
-    
-    nav section p:nth-of-type(1) {
-        margin: 0 0 0 1rem;
-        translate: 3rem 0;
-        font-weight: 900;
-        color: white;
-        font-size: 1.5rem;
-        animation: fadeIn 1s 1s linear alternate-reverse infinite;
-        opacity: 0;
-
-    }
-    
-    nav section p:nth-of-type(2) {
-        margin: 0 0 0 0.5rem;
-        translate: 3rem 0;
-        font-weight: 900;
-        color: white;
-        animation: fadeIn 1s 0.5s linear alternate-reverse infinite;
-        opacity: 0;
-
-    }
-    
-   nav section p:nth-of-type(3) {
-        margin: 0;
-        translate: 3rem 0;
-        font-weight: 900;
-        color: white;
-        animation: fadeIn 1s 0.25s linear alternate-reverse infinite;
-        opacity: 0;
-    }
-
-    main nav ul li label:first-of-type {
-        pointer-events: none;
-    }
-
+    /* titel */
     h1 {
         font-size: 5rem;
         transform-origin: center; 
@@ -891,12 +779,110 @@ html:has( [ name="dayAndNight"]:checked ) {
         transition: 0.5s
     }
 
+
+
+    /* hoekwolken 1 tot 3 */
+    main > img:nth-of-type(-n + 3) {
+        bottom: -40rem;
+        transition: 1s calc(var(--index) * 0.1s);
+    }
+
+    /* bewegende wolken 4 tot 8 */
+    main > img:nth-of-type(n + 4):nth-of-type(-n + 8) {
+        top: -30rem;
+        transition: 1s calc(var(--index) * 0.1s);
+    }
+
+    /* zon/maan */
+    main > img:nth-of-type(9) {
+        --width-sun:75vmin;
+
+        filter: contrast(10);
+        filter: grayscale(1);
+
+        width: var(--width-sun);
+        top: calc( (100dvh - var(--width-sun)) / 2);
+        left: calc( (100vw - var(--width-sun)) / 2);
+        
+        transition: 1s 3s all;
+    }
+
+
+
+    /*******/
+    /* NAV */
+    /*******/
+
+    /* day/night switch */
+    input[name="dayAndNight"] {
+        background-color: rgb(30, 30, 68);
+        background-image: url("./imgs/moon.png");
+    }
+
+
+
+    /* ZZZ */
+    @keyframes fadeIn {
+        0%, 70%, 100%  {
+            opacity: 0;
+            scale:0;
+        }
+        65% {
+            opacity: 1;
+            scale:1;
+        }
+    }
+
+    ul:nth-of-type(1):hover ~ p {
+        position: absolute;
+
+        display: block;
+        margin: 0;
+
+        font-weight: 900;
+        font-family: cloudy;
+        color: white;
+
+        pointer-events: none; 
+        user-select: none;
+
+        animation: fadeIn 2s linear infinite both;
+    }
+    
+    ul:nth-of-type(1):hover ~ p:nth-of-type(1) {
+        left:45%;
+        bottom:1em;
+        
+        animation-delay: 0s;
+    }
+    
+    ul:nth-of-type(1):hover ~ p:nth-of-type(2) {
+        left:60%;
+        bottom:1.875rem;
+
+        font-size: 1.25rem;
+
+        animation-delay: .25s;
+    }
+    
+    ul:nth-of-type(1):hover ~ p:nth-of-type(3) {
+        left:75%;
+        bottom:3rem;
+
+        font-size: 1.5rem;
+
+        animation-delay: .5s;
+    }
+
+
+
+    /* HUISJES */
     main nav ul {
         filter: brightness(20%);
         transition: 1s 2.5s all;
-     }
-        
+    }
 
+    main nav ul li label:first-of-type {
+        pointer-events: none;
+    }
 }
-
-
