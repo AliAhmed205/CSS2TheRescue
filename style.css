@@ -875,8 +875,10 @@ html:has( [ name="dayAndNight"]:checked ) {
     }
 
 
+/***********/
+/* HUISJES */
+/***********/
 
-    /* HUISJES */
     main nav ul {
         filter: brightness(20%);
         transition: 1s 2.5s all;
