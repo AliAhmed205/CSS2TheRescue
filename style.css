@@ -9,9 +9,9 @@
 
 
 
-/***********/
-/* overall */
-/***********/
+/*********************/
+/* OVERALL VARIABLES */
+/*********************/
 
 :nth-of-type(1) { --index:  1; }
 :nth-of-type(2) { --index:  2; }
@@ -90,7 +90,7 @@ body:after {
 
 
 /*********/
-/* TITEL */
+/* TITLE */
 /*********/
 
 h1 {
@@ -121,13 +121,12 @@ h1 {
 
 
 
-/*****************/
-/* WOLKEN EN ZON */
-/*****************/
 
-/* met CSS nesting */
 
-/* alle wolken en de zon/maan */
+/********************** CSS SKY NESTING ***********************/
+/* https://developer.chrome.com/docs/css-ui/css-nesting?hl=nl */
+/**************************************************************/
+
 main > img {
     position: absolute;
     z-index:20;
@@ -242,19 +241,15 @@ main > img {
 
 
 
-/*******/
-/* NAV */
-/*******/
+/*************/
+/* NAVIGATIE */
+/*************/
+
 nav {
     --navGap: 2em;
     --navPadding: 0.5em;
-
     z-index:40;
-
-    /* in de HTML onder de titel */
-    /* visueel boven de titel */
     order: -1;
-
     display: flex;
     padding:var(--navPadding);
     gap: var(--navGap);
@@ -346,7 +341,7 @@ ul {
 section:nth-of-type(1) ul {
     --i:1;
     --radius: 20vmin;
-    --vliegen:10s;
+    --flying:10s;
 
     background-image: 
         url("./imgs/birdhouse-hover.svg"),
@@ -357,7 +352,7 @@ section:nth-of-type(1) ul {
 section:nth-of-type(2) ul {
     --i:2;
     --radius: 27vmin;
-    --vliegen:7s;
+    --flying:7s;
 
     background-image: 
         url("./imgs/birdhouse-house_2.svg"),
@@ -368,7 +363,7 @@ section:nth-of-type(2) ul {
 section:nth-of-type(3) ul {
     --i:3;
     --radius: 35vmin;
-    --vliegen:5s;
+    --flying:5s;
 
     background-image: 
         url("./imgs/birdhouse-house_3.svg"),
@@ -384,7 +379,7 @@ h4 {
 section:nth-of-type(4) ul {
     --i:4;
     --radius: 35vmin;
-    --vliegen:5s;
+    --flying:5s;
     background-image: 
         url("./imgs/birdhouse-house_4.svg"),
         url("./imgs/birdhouse-4.svg");
@@ -397,9 +392,9 @@ ul:has( label:nth-of-type(1):focus-within ) {
 
 
 
-/*********/
-/* VOGEL */
-/*********/
+/********/
+/* BIRD */
+/********/
 
 /* vogel wrapper */
 li {
@@ -412,7 +407,10 @@ li {
 }
 
 
-/* labels and checkboxes */
+/**************************/
+/*  Labels and Checkboxes */
+/**************************/
+
 li input {
     appearance: none;
     position: absolute;
@@ -426,8 +424,10 @@ li label {
     pointer-events: all;   
 }
 
+/*******************************/
+/*  Pointer added for shooting */
+/*******************************/
 
-/* trigger label  */
 li label:nth-of-type(1) {
     /* nada */
     cursor: pointer;
@@ -439,17 +439,16 @@ li label:nth-of-type(1):has(:checked) {
     display:none;
 }
 
+/********************************************/
+/* Main Label for the birds + custom cursor */
+/********************************************/
 
-/* vogel label */
 ul label:nth-of-type(2) {
-    /* background-color:#f006; */
     background-size: 2.5rem auto;
     background-position: center;
     background-repeat:no-repeat;
 
     display:none;
-    /* liever even opnemen in je eigen website - dan werkt het ook offline en zo */
-    /* 16 16 zodat midden van vizier het punt is waarmee geklikt wordt */
     cursor: url("https://cdn.custom-cursor.com/db/pointer/32/Gun_Sight.png") 16 16, pointer;
 
     pointer-events: none;
@@ -460,7 +459,10 @@ ul label:nth-of-type(2) {
     }
 }
 
-/* om door de vliegende vogels te tab-ben */
+/**************************************/
+/* Focus through tabbing on the birds */
+/**************************************/
+
 ul label:nth-of-type(2):focus-within {
     filter:
         drop-shadow( .1em    0   0 #f09)
@@ -474,72 +476,72 @@ ul label:nth-of-type(2):focus-within {
 }
 
 
+/********************/
+/* 🐦 First Bird 🐦 */
+/********************/
 
-/* Eerste vogel */
 section:nth-of-type(1) ul label:nth-of-type(2) {
     background-image: url("./imgs/birdie.png");
 }
 
+/*********************/
+/* 🐦 Second Bird 🐦 */
+/*********************/
 
-/* Tweede vogel */
 section:nth-of-type(2) ul label:nth-of-type(2) {
     background-image: url("./imgs/birdie2.png");
 }
 
-/* Derde vogel */
+/*********************/
+/*  🐦 Third Bird 🐦  */
+/*********************/
+
 section:nth-of-type(3) ul label:nth-of-type(2) {
     background-image: url("./imgs/birdie3.png");
 }
-/* Vierde vogel */
+/**********************/
+/*  🐦 Fourth Bird 🐦  */
+/**********************/
+
 section:nth-of-type(4) ul label:nth-of-type(2) {
     background-image: url("./imgs/birdie4.png");
 }
 
 
 
+/************/
+/*  Flying  */
+/************/
 
-/* vliegen */
 /* eerst naar cirkel dan cirkels */ 
 ul label:nth-of-type(1):has(:checked) + label:nth-of-type(2) {
     display:block;
     position: relative;
     animation: 
-        vliegNaarCirkel 1.5s ease-in,
-        rondjesVliegen var(--vliegen) 1.5s linear infinite,
-        dead 2s paused forwards;
+        FlyToCircle 1.5s ease-in,
+        FlyingInCircles var(--flying) 1.5s linear infinite,
+        Dead 2s paused forwards;
 }
 
-/* dead */
+/******************/
+/*  Dying moment  */
+/******************/
+
 ul label:nth-of-type(1):has(:checked) + label:nth-of-type(2):has(:checked)  {
     animation-play-state: paused, paused, running;
-
-    /* DIT WAS HET PROBLEEM */
-    /* animation-iteration-count: 1; */
-
     filter: grayscale(1) sepia(1) hue-rotate(330deg);
 }
 
-ul:nth-of-type(4) label:nth-of-type(1):has(:checked) + label:nth-of-type(2) {
-    display:block;
-    position: relative;
-    animation: 
-        vliegNaarCirkel 1.5s ease-in,
-        rondjesVliegen var(--vliegen) 1.5s linear infinite,
-        dead 2s paused forwards;
-}
+/********************************************************************************************/
+/* Don't panic about the selector below!                                                    */
+/* When you the eagle's house is checked, the rest of the birds inside the other ul's die.  */
+/* However, when the eagle gets checked, the birds can be once again added                  */ 
+/********************************************************************************************/
 
-html:has( section:nth-of-type(4) :checked )  section:nth-of-type(-n + 3) label:nth-of-type(1):has(:checked) + label:nth-of-type(2) {
+html:has( section:nth-of-type(4) :checked  ):not( :has( label:nth-of-type(2) :checked))  section:nth-of-type(-n + 3) label:nth-of-type(1):has(:checked) + label:nth-of-type(2) {
     animation-play-state: paused, paused, running;
 }
 
-html:not(:has( section:nth-of-type(4) :checked ))  section:nth-of-type(-n + 3) label:nth-of-type(1):has(:checked) + label:nth-of-type(2) {
-    display:block;
-    position: relative;
-    animation: 
-        vliegNaarCirkel 1.5s ease-in,
-        rondjesVliegen var(--vliegen) 1.5s linear infinite,
-        dead 2s paused forwards;
-}
 
 section:nth-of-type(4) {
     position: relative;
@@ -548,7 +550,7 @@ section:nth-of-type(4) {
 
 
 
-@keyframes vliegNaarCirkel {
+@keyframes FlyToCircle {
     100% {
         transform: translate(
             calc(50vw - var(--houseLeft)),
@@ -557,7 +559,7 @@ section:nth-of-type(4) {
     }
 }
 
-@keyframes rondjesVliegen {
+@keyframes FlyingInCircles {
     0% {
         transform: 
             translateX( calc(50vw - var(--houseLeft)) )
@@ -576,7 +578,7 @@ section:nth-of-type(4) {
     }
 }
 
-@keyframes dead {
+@keyframes Dead {
     0%  {
         top: 0;
     }
@@ -601,6 +603,10 @@ section:nth-of-type(4) {
         --navGap: 2em;
         --navPadding:1em;
     }
+
+    /************************************************************************/
+    /*         VARIABLES FOR THE HOUSES, BIRDS AND ADDITIONAL AMOUNTS       */
+    /************************************************************************/
 
     ul {
         --houseSize: 5em;
@@ -629,16 +635,24 @@ section:nth-of-type(4) {
         background-size: 0 0, contain;
     }
 
-    /* Vierde vogel */
+    /*************************************/
+    /*         FOURTH BIRD: BIRD         */
+    /*************************************/
+
+
     section:nth-of-type(4) ul label:nth-of-type(2) {
     background-image: url("./imgs/birdie4.png");
     width: 5rem;
     }     
 
+    /*************************************/
+    /*         FOURTH BIRD: HOUSE        */
+    /*************************************/
+    
     section:nth-of-type(4) ul {
         --i:4;
         --radius: 35vmin;
-        --vliegen:5s;
+        --flying:5s;
         width: 7.5rem;
         background-image: 
             url("./imgs/birdhouse-house_4.svg"),
@@ -650,11 +664,14 @@ section:nth-of-type(4) {
         background-size: contain;
     }
     
+    /*************************************/
+    /*  WARNING MESSAGE REGARDING EAGLE  */
+    /*************************************/
 
     section:nth-of-type(4) ul {
         --i:4;
         --radius: 35vmin;
-        --vliegen:5s;
+        --flying:5s;
         width: 7.5rem;
         background-image: 
             url("./imgs/birdhouse-house_4.svg"),
@@ -665,6 +682,10 @@ section:nth-of-type(4) {
     ul:has( label:nth-of-type(1):focus-within ) {
         background-size: contain;
     }
+
+    /*************************************/
+    /*  WARNING MESSAGE REGARDING EAGLE  */
+    /*************************************/
 
     section:nth-of-type(4) h4 {
         display: block;
@@ -681,6 +702,10 @@ section:nth-of-type(4) {
         box-shadow: red 0 0 20px;
         font-weight: 400;
     }
+
+    /*******************************************/
+    /*  WARNING MESSAGE REGARDING EAGLE HOVER  */
+    /*******************************************/
     
     section:nth-of-type(4):hover h4 {
         opacity: 1;
@@ -704,13 +729,27 @@ html:has( [ name="dayAndNight"]:checked ) {
 }
 
 
+/************ STYLE QUERIES EXPLAINED **************/
+/* https://www.matuzo.at/blog/2023/100daysof-day80 */
+/***************************************************/
+
+
+/* THE NIGHT STYLING  */
 @container style(--dayAndNight:night) {
     body {
         background-color: rgb(0, 0, 66);
         transition: 1s 2s;    
     }
 
-    /* sterren */
+    /*********/
+    /* STARS */
+    /*********/
+
+
+    /*|*****************************************|*/
+    /*|  CREDITS FOR THE STARS: SANNE 'T HOOFT  |*/
+    /*|*****************************************|*/
+
     body::after{
         opacity:1;
         scale:1;
@@ -809,9 +848,9 @@ html:has( [ name="dayAndNight"]:checked ) {
 
 
 
-    /*******/
-    /* NAV */
-    /*******/
+    /*************/
+    /* NAVIGATIE */
+    /*************/
 
     /* day/night switch */
     input[name="dayAndNight"] {
