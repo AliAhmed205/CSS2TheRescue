@@ -626,7 +626,126 @@ html:has( [ name="dayAndNight"]:checked ) {
 
 
 
+<img width="400" src="https://github.com/AliAhmed205/CSS2TheRescue/assets/118130116/833cdfc0-67d9-4006-84cd-f3921bbc76d5">
 
+<p>Alright, this is what I had in mind for the clouds and the sun and moon: CSS nesting! It's when you can put CSS rules inside other rules, making your styles more organized. It's like putting smaller rules inside bigger ones. This is handy for complex HTML structures because you don't have to repeat the parent selector over and over again. Instead, you just nest the child selector inside the parent's curly braces. This makes your CSS code easier to read and manage. You usually do this using preprocessors like Sass or Less, which turn your nested CSS into regular CSS that browsers can use.</p> 
+
+<p><i>Once again, a major shoutout to Sanne who helped me sorting this out. It was quite the hassle but through his help, I've been able to achieve my desired results</i></p>
+
+```CSS
+
+main > img {
+    position: absolute;
+    z-index:20;
+    pointer-events: none;
+    user-select: none;
+
+    /* hoekwolken 1 tot 3 */
+    &:nth-of-type(-n + 3) {
+        bottom: 0;
+        opacity: 0.5;
+        transition: 0.5s;
+    }
+
+    &:nth-of-type(1) {
+        width: 70%;
+    }
+
+    &:nth-of-type(2) {
+        width: 100%;
+        right: 0;
+    }
+
+    &:nth-of-type(3) {
+        width: 100%;
+        left: 0;
+    }
+
+    /* bewegende wolken 4 tot 8 */
+    &:nth-of-type(n + 4):nth-of-type(-n + 8) {
+        width: 30%;
+        transition: 1s;
+    }
+
+    &:nth-of-type(4) {
+        top: 10%;
+        left: 50%;
+    }
+    
+    &:nth-of-type(5) {
+        top: 50%;
+        left: 50%;
+    }
+
+    &:nth-of-type(6) {
+        top: 30%;
+        left: 15%;
+    }
+
+    &:nth-of-type(7) {
+        top: 20%;
+        right: 20%;
+    }
+
+    &:nth-of-type(8) {
+        top: 20%;
+        right: 90%;
+    }
+
+    @media (width > 48em) {
+
+        @keyframes movingClouds { 
+            from {
+                translate: 0 0;
+            }
+            to {
+                translate: -5rem 0;
+            }
+        }
+    
+        &:nth-of-type(n + 4):nth-of-type(-n + 8) {
+            animation: movingClouds var(--dur) infinite alternate-reverse ease-in-out; 
+        }
+    
+        &:nth-of-type(4) {
+            width: 300px;
+            --dur:25s;
+        }
+    
+        &:nth-of-type(5) {
+            width: 300px;
+            --dur:30s;
+        }
+    
+        &:nth-of-type(6) {
+            width: 300px;
+            --dur:70s;
+        }
+    
+        &:nth-of-type(7) {
+            width: 200px;
+            --dur:50s;
+        }
+    
+        &:nth-of-type(8) {
+            width: 200px;
+            --dur:30s;
+        }
+    
+    }
+
+    /* zon/maan 9 */
+    &:nth-of-type(9){
+        top: 10%;
+        left: 80%;
+        z-index:10;
+    
+        width: 10%;
+    
+        transition: 1s;
+    }
+}
+```
 
 
 
