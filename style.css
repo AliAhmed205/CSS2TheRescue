@@ -337,7 +337,10 @@ ul {
     /* background-size: 0 0, contain; */
 }
 
-/* huisje 1 */
+/*********************/
+/* First Bird House  */
+/*********************/
+
 section:nth-of-type(1) ul {
     --i:1;
     --radius: 20vmin;
@@ -348,7 +351,11 @@ section:nth-of-type(1) ul {
         url("./imgs/birdhouse.svg");
 }
 
-/* huisje 2 */
+
+/**********************/
+/* Second Bird House  */
+/**********************/
+
 section:nth-of-type(2) ul {
     --i:2;
     --radius: 27vmin;
@@ -359,7 +366,10 @@ section:nth-of-type(2) ul {
         url("./imgs/birdhouse-2.svg");
 }
 
-/* huisje 3 */
+/**********************/
+/* Third Bird House  */
+/**********************/
+
 section:nth-of-type(3) ul {
     --i:3;
     --radius: 35vmin;
