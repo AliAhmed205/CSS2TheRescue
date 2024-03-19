@@ -348,12 +348,32 @@ ul:first-of-type {
     display: grid;
 }
 ```
-<p>This code snippet styles the first <ul> element in a document, primarily for rendering a grid of birdhouses. It sets custom CSS variables to define sizes and positions relative to the birdhouses and birds, such as --houseSize for the size of the birdhouse and --birdSize for the bird's size. Additionally, it calculates the top and left positions of each birdhouse based on the number of birdhouses and the gap between them. The background image of each birdhouse is specified with a hover effect using SVG images. Margins, padding, and list styles are reset, while the width of the birdhouse and its aspect ratio are defined. Finally, the display is set to a grid layout for optimal alignment of birdhouses.</p>
+<p>This code snippet styles the first ul element in a document, primarily for rendering a grid of birdhouses. It sets custom CSS variables to define sizes and positions relative to the birdhouses and birds, such as --houseSize for the size of the birdhouse and --birdSize for the bird's size. Additionally, it calculates the top and left positions of each birdhouse based on the number of birdhouses and the gap between them. The background image of each birdhouse is specified with a hover effect using SVG images. Margins, padding, and list styles are reset, while the width of the birdhouse and its aspect ratio are defined. Finally, the display is set to a grid layout for optimal alignment of birdhouses.</p>
 
 ### Background
+
 <p>I decided to jazz up the style by adding a background. That's when I thought about clouds. I thought, why not animate clouds and a sun? And when you switch on the day-night mode, instead of just a quick change, imagine everything shifting slowly, almost like a theatrical performance. It's all about timing, making sure each element transitions smoothly.</p>
 
 <img width="500" src="https://github.com/AliAhmed205/CSS2TheRescue/assets/118130116/92cceefd-a7d4-4e41-82cc-17bb289160e0">
+<br> 
+<img width="500" src="https://github.com/AliAhmed205/CSS2TheRescue/assets/118130116/ce334e68-9839-425f-9625-e5c7375e2a2f">
+
+### Meet Teal! 
+<p>After the success of the first bird, I decided to add a second one to make things more entertaining. Teal is a cheerful bird that enjoys flying in loops and is slightly faster than Sunflower (the Yellow Bird).</p>
+<img width="200" src="https://github.com/AliAhmed205/CSS2TheRescue/assets/118130116/81e8cfd9-fefe-42a5-9ab4-7a90a36d860d">
+
+
+### Meet Paradise! 
+<p>Paradise is a lightning-fast flyer! This vibrant bird thrives on zipping past slower companions. While occasionally displaying a touch of cockiness, Paradise remains ever ready to assist fellow birds in times of need.</p>
+
+<img width="200" src="https://github.com/AliAhmed205/CSS2TheRescue/assets/118130116/579ee023-e49d-412a-8399-1f5938b9f957">
+
+
+###  ̶M̶e̶e̶t̶ ̶C̶r̶o̶w̶z̶i̶l̶l̶a̶
+<p>CANCELLED</p>
+<img width="200" src="https://github.com/AliAhmed205/CSS2TheRescue/assets/118130116/2abbeb22-908b-4cab-8bed-767d25690fc3">
+
+
 
 ```CSS
 body {
@@ -375,11 +395,243 @@ body {
 <p><img width="500" alt="Scherm­afbeelding 2024-03-19 om 13 24 39" src="https://github.com/AliAhmed205/CSS2TheRescue/assets/118130116/1c53b30e-0e4f-4d9c-9abe-6dacb7c5be8c"><img width="500" alt="Scherm­afbeelding 2024-03-19 om 13 26 21" src="https://github.com/AliAhmed205/CSS2TheRescue/assets/118130116/be29113e-f9a9-4e22-a613-21e4f6ec46ec"><img width="500" alt="Scherm­afbeelding 2024-03-19 om 13 26 32 1" src="https://github.com/AliAhmed205/CSS2TheRescue/assets/118130116/83358b7e-f872-451c-b049-e5937b9a6b39">
 </p>
 
-<img width="500" src="https://github.com/AliAhmed205/CSS2TheRescue/assets/118130116/ce334e68-9839-425f-9625-e5c7375e2a2f">
+## But what about a day and dark mode... 
+
+<img  width="700" src="https://github.com/AliAhmed205/CSS2TheRescue/assets/118130116/f356d018-95ab-4c69-89c8-8f182a743ba4">
+
+<h3>The most obvious question is: what <b>What are style-queries?</b></h3>
+<p>Style queries, also known as container queries, are a feature in CSS that let you check the size and style of a parent element. They've recently become supported across all modern browsers. With these queries, you can now not only check the size but also the style values of a parent element. This means you have more control over how styles behave in CSS, allowing for better organization between the logic and design of an application. While style queries currently only work with custom CSS property values, they're still handy for combining styles and keeping data separate from design. They're particularly useful for creating reusable components with different styles and making targeted style changes based on specific conditions or states.</p>
+
+<p><i>You can read more about it at <a href="https://developer.chrome.com/docs/css-ui/style-queries?hl=nl">Developer Chrome's article</a>, which is also the source of this little summary</i></p>
+
+<p>For a more visual example, visit this <a href="https://codepen.io/web-dot-dev/pen/KKxzYQx"></a></p>
+
+### How will I do it? 
+
+<p>First, I'll create a checkbox and place it in the same parent (NAV) as the birds, within its own respective separate div.</p>
+
+```HTML
+<div>
+    <input type="checkbox" name="dayAndNight">
+</div>
+```
+
+<p>I note down the selector, including its only property, which is the night variable.</p>
+
+```CSS
+html:has( [ name="dayAndNight"]:checked ) {
+    --dayAndNight:night;
+}
+```
+
+<p>Now to define everything with the style query</p>
+
+```CSS
+@container style(--dayAndNight:night) {
+    body {
+        background-color: rgb(0, 0, 66);
+        transition: 1s 2s;    
+    }
+
+    /*********/
+    /* STARS */
+    /*********/
 
 
-## Meet Teal! 
-<p>After the success of the first bird, I decided to add a second one to make things more entertaining. Teal is a cheerful bird that enjoys flying in loops and is slightly faster than Sunflower (the Yellow Bird).</p>
-<img width="200" src="https://github.com/AliAhmed205/CSS2TheRescue/assets/118130116/81e8cfd9-fefe-42a5-9ab4-7a90a36d860d">
+    /*|*****************************************|*/
+    /*|  CREDITS FOR THE STARS: SANNE 'T HOOFT  |*/
+    /*|*****************************************|*/
+
+    body::after{
+        opacity:1;
+        scale:1;
+
+		box-shadow:
+			-41vw -25vh 0 0 #ffff,
+			-30vw -48vh 0 0 #ffff,
+			-22vw  44vh 0 0 #ffff,
+			-19vw  37vh 0 0 #ffff,
+			 53vw -13vh 0 0 #ffff,
+			 48vw -36vh 0 0 #ffff,
+			 34vw  12vh 0 0 #ffff,
+			 27vw -25vh 0 0 #ffff,
+			 15vw -41vh 0 0 #ffff,
+			-46vw  44vh 0 0 #ffff,
+			-36vw -20vh 0 0 #ffff,
+			-25vw  23vh 0 0 #ffff,
+			-17vw -39vh 0 0 #ffff,
+			 44vw -32vh 0 0 #ffff,
+			 38vw -18vh 0 0 #ffff,
+			 23vw  11vh 0 0 #ffff,
+			 19vw -37vh 0 0 #ffff,
+			-42vw  40vh 0 0 #ffff,
+			-30vw -26vh 0 0 #ffff,
+			-21vw  19vh 0 0 #ffff,
+			-11vw  25vh 0 0 #ffff,
+			 40vw  38vh 0 0 #ffff,
+			 32vw  44vh 0 0 #ffff,
+			 29vw -27vh 0 0 #ffff,
+			 13vw -33vh 0 0 #ffff,
+			-48vw -46vh 0 0 #ffff,
+			-34vw -12vh 0 0 #ffff,
+			-27vw  45vh 0 0 #ffff,
+			-15vw -11vh 0 0 #ffff,
+			 46vw -34vh 0 0 #ffff,
+			 36vw  23vh 0 0 #ffff,
+			 25vw  49vh 0 0 #ffff,
+			 17vw -12vh 0 0 #ffff,
+			-44vw  28vh 0 0 #ffff,
+			-28vw -21vh 0 0 #ffff,
+			-23vw  37vh 0 0 #ffff,
+			-19vw -30vh 0 0 #ffff,
+			 42vw -16vh 0 0 #ffff,
+			 30vw  49vh 0 0 #ffff,
+			 21vw -25vh 0 0 #ffff,
+			 10vw  18vh 0 0 #ffff;
+	
+		filter:
+			drop-shadow(19vw 23vh 0 #fff9)
+			drop-shadow(-23vw -37vh 0 #fff9)
+			drop-shadow(13vw 53vh 0 #fff9)
+			drop-shadow(-59vw -11vh 0 #fff9)
+			drop-shadow(67vw 17vh 0 #fff9);
+
+        transition-delay: 2s;
+	}
+
+
+
+    /* titel */
+    h1 {
+        font-size: 5rem;
+        transform-origin: center; 
+        opacity: 0;
+        pointer-events: none; 
+        transition: 0.5s
+    }
+
+
+
+    /* hoekwolken 1 tot 3 */
+    main > img:nth-of-type(-n + 3) {
+        bottom: -40rem;
+        transition: 1s calc(var(--index) * 0.1s);
+    }
+
+    /* bewegende wolken 4 tot 8 */
+    main > img:nth-of-type(n + 4):nth-of-type(-n + 8) {
+        top: -30rem;
+        transition: 1s calc(var(--index) * 0.1s);
+    }
+
+    /* zon/maan */
+    main > img:nth-of-type(9) {
+        --width-sun:75vmin;
+
+        filter: contrast(10);
+        filter: grayscale(1);
+
+        width: var(--width-sun);
+        top: calc( (100dvh - var(--width-sun)) / 2);
+        left: calc( (100vw - var(--width-sun)) / 2);
+        
+        transition: 1s 3s all;
+    }
+
+
+
+    /*************/
+    /* NAVIGATIE */
+    /*************/
+
+    /* day/night switch */
+    input[name="dayAndNight"] {
+        background-color: rgb(30, 30, 68);
+        background-image: url("./imgs/moon.png");
+    }
+
+
+
+    /* ZZZ */
+    @keyframes fadeIn {
+        0%, 70%, 100%  {
+            opacity: 0;
+            scale:0;
+        }
+        65% {
+            opacity: 1;
+            scale:1;
+        }
+    }
+
+    ul:nth-of-type(1):hover ~ p {
+        position: absolute;
+
+        display: block;
+        margin: 0;
+
+        font-weight: 900;
+        font-family: cloudy;
+        color: white;
+
+        pointer-events: none; 
+        user-select: none;
+
+        animation: fadeIn 2s linear infinite both;
+    }
+    
+    ul:nth-of-type(1):hover ~ p:nth-of-type(1) {
+        left:45%;
+        bottom:1em;
+        
+        animation-delay: 0s;
+    }
+    
+    ul:nth-of-type(1):hover ~ p:nth-of-type(2) {
+        left:60%;
+        bottom:1.875rem;
+
+        font-size: 1.25rem;
+
+        animation-delay: .25s;
+    }
+    
+    ul:nth-of-type(1):hover ~ p:nth-of-type(3) {
+        left:75%;
+        bottom:3rem;
+
+        font-size: 1.5rem;
+
+        animation-delay: .5s;
+    }
+
+
+/***********/
+/* HUISJES */
+/***********/
+
+    main nav ul {
+        filter: brightness(20%);
+        transition: 1s 2.5s all;
+    }
+
+    main nav ul li label:first-of-type {
+        pointer-events: none;
+    }
+}
+```
+
+### The result! 
+<img width="800" src="https://github.com/AliAhmed205/CSS2TheRescue/assets/118130116/367ec70b-7353-4abb-8dbe-e0d631edc931">
+
+
+
+
+
+
+
+
+
+
 
 
