@@ -10,7 +10,7 @@
 <li>Control Panel</li>
 <li>Firework Show</li>
 <li>Paper-airplane</li>
-<li>Rubix Cube/li>
+<li>Rubix Cube</li>
 </ul>
 
 <p>I picked fireworks for my project, but I wanted to spice it up. Just before the assessment, Sanne t'Hooft showed me some of his work that totally blew me away. It hardly had any JS, and I was like, "Wow!". My favorite one was <a href="https://sinds1971.nl/viswinkel/">Freddy's Fabulous Fish Tanks</a> It's like a mix of a control panel and fireworks, even though the fish obviously don't explode. But when you mix up all the species, they create this incredible display.</p>
@@ -300,7 +300,55 @@ input:checked+img{
 
 ### 03/03/2024
 
-## BIG changes 
+### BIG changes 
+
+
+<img width="600" src="https://github.com/AliAhmed205/CSS2TheRescue/assets/118130116/888aed37-5cd8-4fc1-bcbd-5bc8254a57d3">
+
+<p>Sanne helped me sketch out the birds, their homes, and the areas they're supposed to fly in on paper. We made sure to consider everything, like margins, padding, and how long the animations should last. Before, I was using an offset-path, but it didn't work out as I wanted. Sunflower (The Yellowbird) ended up flying in the wrong direction, and changing the viewport messed up everything's position.</p>
+
+### BEFORE
+<img width="700" src="https://github.com/AliAhmed205/CSS2TheRescue/assets/118130116/703c580f-07d0-422e-8a34-b88aef48b56f">
+
+### NEW CALCULATIONS (VARIABLES) 
+
+```CSS
+ul:first-of-type {
+    --houseSize: 5em;
+    --birdSize:calc( var(--houseSize) - var(--housePadding) * 2);
+    --houseTop: calc( var(--navPadding) + var(--houseSize) * .5 );
+    --housePadding: 1em; 
+
+    --houseLeft: calc( 
+            var(--navPadding) 
+            + 
+            (var(--i) - .5) * var(--houseSize) 
+            + 
+            (var(--i) - 1) * var(--navGap) 
+        ); 
+
+
+    position: relative;
+
+    /* background-color: red; */
+    background-image: 
+        url("./birdhouse-hover.svg"),
+        url("./birdhouse.svg");
+    background-repeat: no-repeat;
+    background-position:center;
+    background-size: 0 0, contain;
+
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    
+    width: var(--houseSize);
+    aspect-ratio: 1;
+
+    display: grid;
+}
+```
+<p>This code snippet styles the first <ul> element in a document, primarily for rendering a grid of birdhouses. It sets custom CSS variables to define sizes and positions relative to the birdhouses and birds, such as --houseSize for the size of the birdhouse and --birdSize for the bird's size. Additionally, it calculates the top and left positions of each birdhouse based on the number of birdhouses and the gap between them. The background image of each birdhouse is specified with a hover effect using SVG images. Margins, padding, and list styles are reset, while the width of the birdhouse and its aspect ratio are defined. Finally, the display is set to a grid layout for optimal alignment of birdhouses.</p>
 
 ### Background
 <p>I decided to jazz up the style by adding a background. That's when I thought about clouds. I thought, why not animate clouds and a sun? And when you switch on the day-night mode, instead of just a quick change, imagine everything shifting slowly, almost like a theatrical performance. It's all about timing, making sure each element transitions smoothly.</p>
@@ -316,22 +364,22 @@ body {
 
 <p>I would first add a regular empty background.</p>
 
+<img width="500" alt="Scherm­afbeelding 2024-03-19 om 11 07 52" src="https://github.com/AliAhmed205/CSS2TheRescue/assets/118130116/8370c9ba-099c-4c7f-90a0-1b59ce087362">
 
 
+<p>After that, I threw in some more scenery like clouds, the sun, and the first birdhouse. So basically, when the user clicks on the house, a bird pops up and flies to the center of the screen, adjusting for the width of their browser.</p>
+
+<img width="500" alt="Scherm­afbeelding 2024-03-19 om 11 19 59" src="https://github.com/AliAhmed205/CSS2TheRescue/assets/118130116/38ec0a7d-d3af-411d-bc6f-906d49f6653e">
+
+### The Result
+<p><img width="500" alt="Scherm­afbeelding 2024-03-19 om 13 24 39" src="https://github.com/AliAhmed205/CSS2TheRescue/assets/118130116/1c53b30e-0e4f-4d9c-9abe-6dacb7c5be8c"><img width="500" alt="Scherm­afbeelding 2024-03-19 om 13 26 21" src="https://github.com/AliAhmed205/CSS2TheRescue/assets/118130116/be29113e-f9a9-4e22-a613-21e4f6ec46ec"><img width="500" alt="Scherm­afbeelding 2024-03-19 om 13 26 32 1" src="https://github.com/AliAhmed205/CSS2TheRescue/assets/118130116/83358b7e-f872-451c-b049-e5937b9a6b39">
+</p>
+
+<img width="500" src="https://github.com/AliAhmed205/CSS2TheRescue/assets/118130116/ce334e68-9839-425f-9625-e5c7375e2a2f">
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+## Meet Teal! 
+<p>After the success of the first bird, I decided to add a second one to make things more entertaining. Teal is a cheerful bird that enjoys flying in loops and is slightly faster than Sunflower (the Yellow Bird).</p>
+<img width="200" src="https://github.com/AliAhmed205/CSS2TheRescue/assets/118130116/81e8cfd9-fefe-42a5-9ab4-7a90a36d860d">
 
 
