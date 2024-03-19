@@ -358,6 +358,8 @@ ul:first-of-type {
 <br> 
 <img width="500" src="https://github.com/AliAhmed205/CSS2TheRescue/assets/118130116/ce334e68-9839-425f-9625-e5c7375e2a2f">
 
+### 11/03/2024
+
 ### Meet Teal! 
 <p>After the success of the first bird, I decided to add a second one to make things more entertaining. Teal is a cheerful bird that enjoys flying in loops and is slightly faster than Sunflower (the Yellow Bird).</p>
 <img width="200" src="https://github.com/AliAhmed205/CSS2TheRescue/assets/118130116/81e8cfd9-fefe-42a5-9ab4-7a90a36d860d">
@@ -382,7 +384,7 @@ body {
 }
 ```
 
-<p>I would first add a regular empty background.</p>
+### 12/03/2024
 
 <img width="500" alt="Scherm­afbeelding 2024-03-19 om 11 07 52" src="https://github.com/AliAhmed205/CSS2TheRescue/assets/118130116/8370c9ba-099c-4c7f-90a0-1b59ce087362">
 
@@ -625,6 +627,7 @@ html:has( [ name="dayAndNight"]:checked ) {
 <img width="800" src="https://github.com/AliAhmed205/CSS2TheRescue/assets/118130116/367ec70b-7353-4abb-8dbe-e0d631edc931">
 
 
+### 18/03/2024
 
 <img width="400" src="https://github.com/AliAhmed205/CSS2TheRescue/assets/118130116/833cdfc0-67d9-4006-84cd-f3921bbc76d5">
 
@@ -746,6 +749,107 @@ main > img {
     }
 }
 ```
+
+## A NEW BIRD APPROACHES
+<p>Meet Edward The Eagle. The predator that terrifies every living bird in the sky. No one dares to share the sky with him, and whenever other birds see him, they immediately faint.</p>
+
+### Edward The Eagle
+<img width="200" src="https://github.com/AliAhmed205/CSS2TheRescue/assets/118130116/3f509255-583a-4dd4-8fc4-69db94f659a5">
+
+### Edward's House 
+<img width="100" src="https://github.com/AliAhmed205/CSS2TheRescue/assets/118130116/cbbcfd65-402c-40f1-9404-ed70a6783e4f">
+
+
+<p>Each bird house in the CSS</p>
+
+```CSS
+/*********************/
+/* First Bird House  */
+/*********************/
+
+section:nth-of-type(1) ul {
+    --i:1;
+    --radius: 20vmin;
+    --flying:10s;
+
+    background-image: 
+        url("./imgs/birdhouse-hover.svg"),
+        url("./imgs/birdhouse.svg");
+}
+
+
+/**********************/
+/* Second Bird House  */
+/**********************/
+
+section:nth-of-type(2) ul {
+    --i:2;
+    --radius: 27vmin;
+    --flying:7s;
+
+    background-image: 
+        url("./imgs/birdhouse-house_2.svg"),
+        url("./imgs/birdhouse-2.svg");
+}
+
+/**********************/
+/* Third Bird House  */
+/**********************/
+
+section:nth-of-type(3) ul {
+    --i:3;
+    --radius: 35vmin;
+    --flying:5s;
+
+    background-image: 
+        url("./imgs/birdhouse-house_3.svg"),
+        url("./imgs/birdhouse-3.svg");
+}
+
+h4 {
+    display: none;
+}
+
+
+section:nth-of-type(4) ul {
+    --i:4;
+    --radius: 35vmin;
+    --flying:5s;
+    background-image: 
+        url("./imgs/birdhouse-house_4.svg"),
+        url("./imgs/birdhouse-4.svg");
+}
+
+ul:has( label:nth-of-type(1):hover ),
+ul:has( label:nth-of-type(1):focus-within ) {
+    background-size: contain;
+}
+
+li {
+    z-index: 50;
+    grid-area: 1/1;
+    padding: var(--housePadding);
+    pointer-events: none;
+    display:grid;
+}
+```
+
+### He controls the sky... Literally 
+
+```CSS
+
+/********************************************************************************************/
+/* Don't panic about the selector below!                                                    */
+/* When you the eagle's house is checked, the rest of the birds inside the other ul's die.  */
+/* However, when the eagle gets checked, the birds can be once again added                  */ 
+/********************************************************************************************/
+
+html:has( section:nth-of-type(4) :checked  ):not( :has( label:nth-of-type(2) :checked))  section:nth-of-type(-n + 3) label:nth-of-type(1):has(:checked) + label:nth-of-type(2) {
+    animation-play-state: paused, paused, running;
+}
+
+```
+
 
 
 
